@@ -22,6 +22,7 @@ namespace Reese
 
         // For gun.
         public GameObject bulletPrefab;
+        public bool stopShooting = false;
 
         // Everything for facing player and shooting
         private float horizontalDistance = 9f;
@@ -71,12 +72,22 @@ namespace Reese
 
                 if ((checkHorizontalDistance < horizontalDistance) && checkVerticalDistance < verticalDistance)
                 {
-
                     // Player has been detected.
+                    if ((currentPlayer.position.x - transform.position.x) < 0) // If player is on the right.
+                    {
+                        // transform.Rotate(transform.rotation.x, 180, transform.rotation.z);
+                        if (!stopShooting)
+                        {
+                            stopShooting = true;
+                            Shoot();
+                            Invoke("SwapStates", 0.3f);
+                        }
+                    }
+                    else // Player is on the left.
+                    {
+                        // transform.Rotate(transform.rotation.x, 0, transform.rotation.z);
 
-                    // Make guard look towards player.
-
-                    // Guard fires gun at player at an interval.
+                    }
                 }
 
                 else
@@ -99,8 +110,20 @@ namespace Reese
         {
             if(stopRotating)
             {
+                Debug.Log("Just rotated");
                 stopRotating = false;
             }
+
+            if(stopShooting)
+            {
+                Debug.Log("Just shot a dude");
+                stopShooting = false;
+            }
+        }
+
+        void Shoot()
+        {
+
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
