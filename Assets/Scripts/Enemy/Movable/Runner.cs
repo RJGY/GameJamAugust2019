@@ -18,6 +18,9 @@ public class Runner : MonoBehaviour
     private float horizontalDistance = 10f;
     private float verticalDistance = 1f;
     public LayerMask layer;
+    public bool facingLeft = false;
+    public bool facingRight = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,8 +51,11 @@ public class Runner : MonoBehaviour
 
             if ((checkHorizontalDistance < horizontalDistance) && checkVerticalDistance < verticalDistance)
             {
-                // Player has been detected.
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(currentPlayer.position.x, transform.position.y), speed * Time.deltaTime);
+                ChangeRotation();
+                if (!stopRotating)
+                {
+                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(currentPlayer.position.x, transform.position.y), speed * Time.deltaTime);
+                }
             }
 
             else
@@ -57,10 +63,7 @@ public class Runner : MonoBehaviour
                 // Flip the guard, make it look like he is looking for the alien.
                 if (!stopRotating && rotateCount < 4)
                 {
-                    transform.Rotate(transform.rotation.x, transform.rotation.y + 180, transform.rotation.z);
-                    stopRotating = true;
-                    Invoke("SwapStates", 1f);
-                    rotateCount++;
+                    Rotate();
                 }
 
                 else if (rotateCount == 4)
@@ -71,29 +74,76 @@ public class Runner : MonoBehaviour
         }
     }
 
+    void Rotate()
+    {
+        Debug.Log("JUST ROTATED IN Rotate()");
+        transform.Rotate(transform.rotation.x, transform.rotation.y + 180, transform.rotation.z);
+        stopRotating = true;
+        Invoke("SwapStates", 1f);
+        rotateCount++;
+    }
+
+    void ChangeRotation()
+    {
+        if (!stopRotating)
+        {
+            if (facingRight) // Turns you left
+            {
+                facingLeft = true;
+                facingRight = false;
+                transform.SetPositionAndRotation(transform.position, Quaternion.Euler(transform.rotation.x, 180, transform.rotation.z));
+                stopRotating = true;
+                Invoke("SwapStates", 1f);
+            }
+
+            else // Turns you right
+            {
+                facingLeft = false;
+                facingRight = true;
+                transform.SetPositionAndRotation(transform.position, Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z));
+                stopRotating = true;
+                Invoke("SwapStates", 1f);
+            }
+        }
+    }
+
+
     void Patrol()
     {
         Transform currentPoint = points[currentWayPoint]; // Gets current point.
 
         float distance = Vector2.Distance(transform.position, currentPoint.position); // Finds distance between itself and the current point.
 
+        float checkDistance = transform.position.x - currentPoint.position.x;
+        
+        if (checkDistance > 0 && !facingLeft)
+        {
+            Debug.Log("Changed Rotation");
+            ChangeRotation();
+        }
+
+        else if (!facingRight && checkDistance < 0)
+        {
+            Debug.Log("Changed Rotation");
+            ChangeRotation();
+        }
+        
         transform.position = Vector2.MoveTowards(transform.position, currentPoint.position, speed * Time.deltaTime);
 
         if (distance < waypointDistance)
         {
             if (currentWayPoint < points.Length - 1)
             {
+                Debug.Log("Add to counter");
                 currentWayPoint++;
-                transform.Rotate(transform.rotation.x, transform.rotation.y + 180, transform.rotation.z);
             }
 
             else
             {
                 // if current waypoints is outside array length
                 // reset back to 1
+                Debug.Log("Reset counter.");
                 currentWayPoint = 1;
-                transform.Rotate(transform.rotation.x, transform.rotation.y + 180, transform.rotation.z);
-                rotateCount = 0;
             }
         }
     }
@@ -105,18 +155,39 @@ public class Runner : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, 1f, ~layer);
             if (hit.collider == null)
             {
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(currentPlayer.position.x, transform.position.y), speed * Time.deltaTime);
-                Debug.Log("NOTHING HERE");
+                if(!facingLeft)
+                {
+                    ChangeRotation();
+                }
+                    
+                if (!stopRotating)
+                {
+                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(currentPlayer.position.x, transform.position.y), speed * Time.deltaTime);
+                }
+            }
+        }
+
+        else if ((currentPlayer.position.x - transform.position.x) > 0) // Move to right
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, 1f, ~layer);
+            if (hit.collider == null)
+            {
+                if (!facingRight)
+                {
+                    ChangeRotation();
+                }
+
+                if (!stopRotating)
+                {
+                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(currentPlayer.position.x, transform.position.y), speed * Time.deltaTime);
+                }
             }
         }
 
         else
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right); // Move to right
-            if (hit.collider == null)
-            {
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(currentPlayer.position.x, transform.position.y), speed * Time.deltaTime);
-            }
+            rotateCount = 0;
+            // THIS COULD ALSO CAUSE A BUG TOO
         }
 
     }
@@ -131,7 +202,6 @@ public class Runner : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.transform.name);
         if (collision.CompareTag("Player"))
         {
             currentPlayer = collision.transform;
