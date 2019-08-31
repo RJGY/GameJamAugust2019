@@ -11,7 +11,7 @@ public class PlayerHandler : MonoBehaviour
 
     private UIManager _uiManager;
 
-    private void Awake()
+    void Awake()
     {
         _uiManager = GetComponent<UIManager>();
     }
