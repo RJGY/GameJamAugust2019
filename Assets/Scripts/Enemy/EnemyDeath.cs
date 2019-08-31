@@ -33,24 +33,31 @@ namespace Reese
         void OnDeath()
         {
 
-            // Play respective enemy death animation.
+            
             // if (guard)
             // anim.DeathAnimation
 
-            Destroy(triggerEvent);
+            if (triggerEvent != null)
+            {
+                Destroy(triggerEvent);
+            }
+            
 
             if (guard != null)
             {
+                // Play respective enemy death animation.
                 Destroy(guard);
             }
 
             else if (runner != null)
             {
+                // Play respective enemy death animation.
                 Destroy(runner);
             }
 
             else if (turret != null)
             {
+                // Play respective enemy death animation.
                 Destroy(turret);
             }
 
