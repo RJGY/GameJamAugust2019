@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     public float curPortal = 10f; 
     //private Transform curPortal;
     private CharacterController2D controller;
-
+    private Animator animator;
     //private Interact interactObject;
     /*
     Create an 'interactObject' of Type 'Interact' 
@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         controller = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController2D>();
+        animator = GetComponent<Animator>();
 
     }
 
@@ -51,6 +52,7 @@ public class Player : MonoBehaviour
 
             if (isJumping)
             {
+            animator.SetBool("", true);
                 controller.Jump(jumpHeight);
 
             }
