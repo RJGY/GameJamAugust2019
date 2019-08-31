@@ -217,7 +217,7 @@ public class CharacterController2D : MonoBehaviour
             // Add a vertical force to the player.
             IsGrounded = false;
             Rigidbody.AddForce(new Vector2(0f, height), ForceMode2D.Impulse);
-            Anim.SetBool("IsJumping", true);
+            
 
         }
         else if (DoubleJump)
@@ -225,7 +225,7 @@ public class CharacterController2D : MonoBehaviour
             DoubleJump = false;
             Rigidbody.AddForce(new Vector2(0f, height), ForceMode2D.Impulse);
 
-            Anim.SetBool("DoubleJump", true);
+           
         }
         if (IsFrontBlocked)
         {
@@ -305,6 +305,7 @@ public class CharacterController2D : MonoBehaviour
             Anim.SetTrigger("Dying");
             IsDead = true;
             UIManager.Instance.ActivateRespawnButton();
+        GameManager.Instance.GameOver();
         // UIManager - Activate red border
         // Place Redborder sprite as a child into the Respawn button.        
         IsHurt = true;

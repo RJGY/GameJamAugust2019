@@ -146,7 +146,14 @@ namespace Reese
 
         void Shoot()
         {
-            Instantiate(bulletPrefab, gunPosition.position, transform.rotation);
+            if (!GameManager.Instance.gameEnded)
+            {
+                Instantiate(bulletPrefab, gunPosition.position, transform.rotation);
+            }
+            else
+            {
+                Debug.Log("This should happen");
+            }
         }
 
         void KillPlayer()
@@ -154,9 +161,9 @@ namespace Reese
             if (currentPlayer != null)
             {
                 float distance = Vector2.Distance(transform.position, currentPlayer.position);
-                if (distance < killRadius)
+                if (distance < killRadius && !GameManager.Instance.gameEnded)
                 {
-                    // Works but kills them over and over.
+                    GameManager.Instance.GameOver();
                     SendMessage("Interact");
                 }
             }
