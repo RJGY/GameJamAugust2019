@@ -145,6 +145,7 @@ public class CharacterController2D : MonoBehaviour
 
     public void Attack()
     {
+        Anim.SetTrigger("Attack");
         if (CanHurt == true)
         {
 
