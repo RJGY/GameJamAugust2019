@@ -19,6 +19,7 @@ namespace Reese
         public float waypointDistance;
         public float speed = 2f;
         public int currentWayPoint = 1;
+        public int rotateCount;
 
         // For gun.
         public Transform gunPosition;
@@ -40,10 +41,10 @@ namespace Reese
 
         void Update()
         {
+            Transform currentPoint = points[currentWayPoint]; // Gets current point.
+
             if (currentPlayer == null)
             {
-                Transform currentPoint = points[currentWayPoint]; // Gets current point.
-
                 float distance = Vector2.Distance(transform.position, currentPoint.position); // Finds distance between itself and the current point.
 
                 transform.position = Vector2.MoveTowards(transform.position, currentPoint.position, speed * Time.deltaTime);
@@ -57,8 +58,9 @@ namespace Reese
                     }
 
                     else
-                    {// if current waypoints is outside array length
-                     // reset back to 1
+                    {
+                        // if current waypoints is outside array length
+                        // reset back to 1
                         currentWayPoint = 1;
                         transform.Rotate(transform.rotation.x, transform.rotation.y + 180, transform.rotation.z);
                     }
@@ -81,7 +83,7 @@ namespace Reese
                         {
                             stopShooting = true;
                             Shoot();
-                            Invoke("SwapStates", 0.3f);
+                            Invoke("SwapStates", 0.5f);
                         }
                     }
                     else // Player is on the left.
@@ -91,7 +93,7 @@ namespace Reese
                         {
                             stopShooting = true;
                             Shoot();
-                            Invoke("SwapStates", 0.3f);
+                            Invoke("SwapStates", 0.5f);
                         }
                     }
                 }
@@ -99,11 +101,20 @@ namespace Reese
                 else
                 {
                     // Flip the guard, make it look like he is looking for the alien.
-                    if (!stopRotating)
+                    if (!stopRotating && rotateCount < 5)
                     {
                         transform.Rotate(transform.rotation.x, transform.rotation.y + 180, transform.rotation.z);
                         stopRotating = true;
                         Invoke("SwapStates", 1f);
+                        rotateCount++;
+                    }
+
+                    else if (rotateCount >= 5)
+                    {
+                        // Guard goes back to patrolling
+                        transform.position = Vector2.MoveTowards(transform.position, currentPoint.position, speed * Time.deltaTime);
+                        rotateCount = 0;
+                        currentPlayer = null;
                     }
 
                     // Guard knows something ie here, but does not know here to look.
