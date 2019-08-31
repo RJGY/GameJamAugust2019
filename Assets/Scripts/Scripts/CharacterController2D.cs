@@ -17,9 +17,9 @@ public class CharacterController2D : MonoBehaviour
     //[SerializeField] private LayerMask m_WhatIsLadder;                          // A mask determining what is ladder to the character
     [SerializeField] private Transform m_GroundCheck;                           // A position marking where to check if the player is grounded.
     //[SerializeField] private Transform m_LadderCheck;                           // A position marking where the starting point of ladder ray is.
-    [SerializeField] private Transform m_FrontCheck, m_TopCheck, m_AttackCheck;                            // A position makring where to check if the player is not hitting anything
+    [SerializeField] private Transform m_FrontCheck, m_TopCheck, m_AttackCheck, m_HitBox;                            // A position makring where to check if the player is not hitting anything
     [SerializeField] private float m_GroundedRadius = .05f;                      // Radius of the overlap circle to determine if grounded
-    [SerializeField] private float m_FrontCheckRadius = .05f, m_TopCheckRadius = .05f, m_AttackCheckRadius = .1f;                    // Radius of the overlap circle to determine if front is blocked
+    [SerializeField] private float m_FrontCheckRadius = .05f, m_TopCheckRadius = .05f, m_AttackCheckRadius = 0.05f, m_HitBoxRadius = .05f;                    // Radius of the overlap circle to determine if front is blocked
     [SerializeField] private float m_GroundRayLength = .2f;                     // Length of the ray beneith controller
     //[SerializeField] private float m_LadderRayLength = .5f;                     // Length of the ray above controller
 
@@ -35,6 +35,7 @@ public class CharacterController2D : MonoBehaviour
     public bool IsFrontBlocked { get; private set; }
     public bool IsTopBlocked { get; private set; }
     public bool CanHurt { get; private set; }
+    public bool IsHurt { get; private set; }
     public bool DoubleJump;
     public bool IsFacingRight { get; private set; } = true;
     public float JumpAngle;
@@ -68,8 +69,10 @@ public class CharacterController2D : MonoBehaviour
         Gizmos.DrawWireSphere(m_GroundCheck.position, m_GroundedRadius);
         Gizmos.DrawWireSphere(m_FrontCheck.position, m_FrontCheckRadius);
         Gizmos.DrawWireSphere(m_TopCheck.position, m_TopCheckRadius);
+        Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(m_AttackCheck.position, m_AttackCheckRadius);
         Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(m_HitBox.position, m_HitBoxRadius);
         Ray groundRay = new Ray(transform.position, Vector3.down);
         Gizmos.DrawLine(groundRay.origin, groundRay.origin + groundRay.direction * m_GroundRayLength);
        
@@ -130,6 +133,14 @@ public class CharacterController2D : MonoBehaviour
             if (colliders[i].gameObject != gameObject)
             {
                 CanHurt = true;
+            }
+        }
+        colliders = Physics2D.OverlapCircleAll(m_HitBox.position, m_HitBoxRadius, m_WhatIsGround);
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (colliders[i].gameObject != gameObject)
+            {
+                IsHurt = true;
             }
         }
     }
