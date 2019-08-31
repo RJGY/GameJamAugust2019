@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
 
     }
-
+    
     /*/private void OnDrawGizmos()
     {
         if (curPortal != null)
@@ -57,9 +57,7 @@ public class Player : MonoBehaviour
 
             }
             controller.Climb(vertical * climbSpeed);
-        {
-
-        }
+        
             
             controller.Move(horizontal * moveSpeed);
         
