@@ -7,17 +7,20 @@ public class Bullet : MonoBehaviour
     // Change this value later to the player script.
     private Transform currentPlayer;
 
-    private float setDistance = 9f;
-    private float bulletSpeed = 2f;
+    private float bulletSpeed = 4f;
 
     private bool movingToRight = false;
     private bool movingToLeft = false;
+    private float timeExisted;
 
     // Start is called before the first frame update
     void Start()
     {
+        timeExisted = Time.time + 8;
         // Change this later on to the player script.
         currentPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+
+        timeExisted = Time.realtimeSinceStartup;
 
         if ((currentPlayer.position.x - transform.position.x) < 0) // If player is on the left.
         {
@@ -35,6 +38,11 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Time.time >= timeExisted)
+        {
+            Destroy(gameObject);
+        }
+
         if(movingToRight)
         {
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x - 9, transform.position.y), bulletSpeed * Time.deltaTime);

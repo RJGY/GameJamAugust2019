@@ -10,7 +10,6 @@ namespace Reese
     {
         private Transform currentPlayer = null;
 
-        private Sprite guardSprite;
         private bool stopRotating = false;
 
         // Everything for navmesh stuff - patrol
@@ -45,26 +44,7 @@ namespace Reese
 
             if (currentPlayer == null)
             {
-                float distance = Vector2.Distance(transform.position, currentPoint.position); // Finds distance between itself and the current point.
-
-                transform.position = Vector2.MoveTowards(transform.position, currentPoint.position, speed * Time.deltaTime);
-
-                if (distance < waypointDistance)
-                {
-                    if (currentWayPoint < points.Length - 1)
-                    {
-                        currentWayPoint++;
-                        transform.Rotate(transform.rotation.x, transform.rotation.y + 180, transform.rotation.z);
-                    }
-
-                    else
-                    {
-                        // if current waypoints is outside array length
-                        // reset back to 1
-                        currentWayPoint = 1;
-                        transform.Rotate(transform.rotation.x, transform.rotation.y + 180, transform.rotation.z);
-                    }
-                }
+                Patrol();
             }
 
             else
@@ -101,7 +81,7 @@ namespace Reese
                 else
                 {
                     // Flip the guard, make it look like he is looking for the alien.
-                    if (!stopRotating && rotateCount < 5)
+                    if (!stopRotating && rotateCount < 4)
                     {
                         transform.Rotate(transform.rotation.x, transform.rotation.y + 180, transform.rotation.z);
                         stopRotating = true;
@@ -109,16 +89,39 @@ namespace Reese
                         rotateCount++;
                     }
 
-                    else if (rotateCount >= 5)
+                    else if (rotateCount == 4)
                     {
                         // Guard goes back to patrolling
-                        transform.position = Vector2.MoveTowards(transform.position, currentPoint.position, speed * Time.deltaTime);
-                        rotateCount = 0;
-                        currentPlayer = null;
+                        Patrol();
+
                     }
+                }
+            }
+        }
 
-                    // Guard knows something ie here, but does not know here to look.
+        void Patrol()
+        {
+            Transform currentPoint = points[currentWayPoint]; // Gets current point.
 
+            float distance = Vector2.Distance(transform.position, currentPoint.position); // Finds distance between itself and the current point.
+
+            transform.position = Vector2.MoveTowards(transform.position, currentPoint.position, speed * Time.deltaTime);
+
+            if (distance < waypointDistance)
+            {
+                if (currentWayPoint < points.Length - 1)
+                {
+                    currentWayPoint++;
+                    transform.Rotate(transform.rotation.x, transform.rotation.y + 180, transform.rotation.z);
+                }
+
+                else
+                {
+                    // if current waypoints is outside array length
+                    // reset back to 1
+                    currentWayPoint = 1;
+                    transform.Rotate(transform.rotation.x, transform.rotation.y + 180, transform.rotation.z);
+                    rotateCount = 0;
                 }
             }
         }
