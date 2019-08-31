@@ -12,6 +12,7 @@ public class PlayerHandler : MonoBehaviour
     public Slider healthBar;
     public Slider manaBar;
     public Slider staminaBar;
+
     void Start()
     {
         maxHealth = 100;
