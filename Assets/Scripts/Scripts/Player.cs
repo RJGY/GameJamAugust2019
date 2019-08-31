@@ -44,28 +44,24 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-        bool isJumping = Input.GetButtonDown("Jump");
-
-        if (isJumping)
+        if (!controller.IsDead)
         {
-            
-            controller.Jump(jumpHeight);
+            float horizontal = Input.GetAxis("Horizontal");
+            float vertical = Input.GetAxis("Vertical");
+            bool isJumping = Input.GetButtonDown("Jump");
+
+            if (isJumping)
+            {
+
+                controller.Jump(jumpHeight);
 
 
+            }
+
+            controller.Climb(vertical * climbSpeed);
+
+
+            controller.Move(horizontal * moveSpeed);
         }
-
-        controller.Climb(vertical * climbSpeed);
-
-
-        controller.Move(horizontal * moveSpeed);
-        if (controller.IsHurt)
-        {
-
-        }
-
     }
 }

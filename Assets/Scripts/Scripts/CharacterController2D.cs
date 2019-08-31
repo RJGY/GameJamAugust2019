@@ -14,6 +14,7 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private bool m_AirControl = false;                         // Whether or not a player can steer while jumping
     [SerializeField] private bool m_StickToSlopes = true;                         // Whether or not a player can stick to slopes
     [SerializeField] private LayerMask m_WhatIsGround;                          // A mask determining what is ground to the character
+    [SerializeField] private LayerMask m_WhatIsEnemy;
     //[SerializeField] private LayerMask m_WhatIsLadder;                          // A mask determining what is ladder to the character
     [SerializeField] private Transform m_GroundCheck;                           // A position marking where to check if the player is grounded.
     //[SerializeField] private Transform m_LadderCheck;                           // A position marking where the starting point of ladder ray is.
@@ -21,11 +22,11 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private float m_GroundedRadius = .05f;                      // Radius of the overlap circle to determine if grounded
     [SerializeField] private float m_FrontCheckRadius = .05f, m_TopCheckRadius = .05f, m_AttackCheckRadius = 0.05f, m_HitBoxRadius = .05f;                    // Radius of the overlap circle to determine if front is blocked
     [SerializeField] private float m_GroundRayLength = .2f;                     // Length of the ray beneith controller
-    //[SerializeField] private float m_LadderRayLength = .5f;                     // Length of the ray above controller
+                                                                                //[SerializeField] private float m_LadderRayLength = .5f;                     // Length of the ray above controller
 
-    
+
     private float m_OriginalGravityScale;
-    
+
     [Header("Events")]
     public UnityEvent OnLandEvent;
 
@@ -39,6 +40,8 @@ public class CharacterController2D : MonoBehaviour
     public bool DoubleJump;
     public bool IsFacingRight { get; private set; } = true;
     public float JumpAngle;
+
+    public bool IsDead { get; private set; } = false;
     public Rigidbody2D Rigidbody { get; private set; }
     public Animator Anim { get; private set; }
 
@@ -75,23 +78,23 @@ public class CharacterController2D : MonoBehaviour
         Gizmos.DrawWireSphere(m_HitBox.position, m_HitBoxRadius);
         Ray groundRay = new Ray(transform.position, Vector3.down);
         Gizmos.DrawLine(groundRay.origin, groundRay.origin + groundRay.direction * m_GroundRayLength);
-       
+
 
         //Gizmos.color = Color.red;
         //Ray ladderRay = new Ray(m_LadderCheck.position, Vector3.up);
         //Gizmos.DrawLine(ladderRay.origin, ladderRay.origin + ladderRay.direction * m_LadderRayLength);
     }
-    
-    
+
+
     private void FixedUpdate()
     {
-        
 
         bool wasGrounded = IsGrounded;
         IsGrounded = false;
         Anim.SetBool("IsGrounded", false);
         IsFrontBlocked = false;
         IsTopBlocked = false;
+        Anim.SetBool("IsRunning", false);
         Anim.SetBool("IsFrontBlocked", false);
         // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
         // This can be done using layers instead but Sample Assets will not overwrite your project settings.
@@ -104,8 +107,8 @@ public class CharacterController2D : MonoBehaviour
                 if (!wasGrounded)
                     OnLandEvent.Invoke();
                 DoubleJump = true;
-                Anim.SetBool("IsJumping", false);
-                Anim.SetBool("DoubleJump", false);
+
+
             }
         }
 
@@ -127,7 +130,7 @@ public class CharacterController2D : MonoBehaviour
                 IsTopBlocked = true;
             }
         }
-        colliders = Physics2D.OverlapCircleAll(m_AttackCheck.position, m_AttackCheckRadius, m_WhatIsGround);
+        colliders = Physics2D.OverlapCircleAll(m_AttackCheck.position, m_AttackCheckRadius, m_WhatIsEnemy);
         for (int i = 0; i < colliders.Length; i++)
         {
             if (colliders[i].gameObject != gameObject)
@@ -135,22 +138,16 @@ public class CharacterController2D : MonoBehaviour
                 CanHurt = true;
             }
         }
-        colliders = Physics2D.OverlapCircleAll(m_HitBox.position, m_HitBoxRadius, m_WhatIsGround);
-        for (int i = 0; i < colliders.Length; i++)
-        {
-            if (colliders[i].gameObject != gameObject)
-            {
-                IsHurt = true;
-            }
-        }
+        
+
     }
 
-   
+
     public void Attack()
     {
         if (CanHurt == true)
         {
-            
+
         }
 
     }
@@ -165,7 +162,7 @@ public class CharacterController2D : MonoBehaviour
         theScale.x *= -1;
         transform.localScale = theScale;
     }
-    
+
     // >> Custom methods go here <<
 
     public void Climb(float offsetY)
@@ -173,8 +170,8 @@ public class CharacterController2D : MonoBehaviour
         if (HasParameter("ClimbSpeed", Anim))
             Anim.SetFloat("ClimbSpeed", offsetY);
 
-       //RaycastHit2D ladderHit = Physics2D.Raycast(m_LadderCheck.position, Vector2.up, m_LadderRayLength, m_WhatIsLadder);
-        if (IsFrontBlocked||IsTopBlocked)
+        //RaycastHit2D ladderHit = Physics2D.Raycast(m_LadderCheck.position, Vector2.up, m_LadderRayLength, m_WhatIsLadder);
+        if (IsFrontBlocked || IsTopBlocked)
         {
             if (offsetY != 0)
             {
@@ -182,7 +179,7 @@ public class CharacterController2D : MonoBehaviour
                 Anim.SetBool("IsClimbing", true);
             }
 
-           
+
         }
         else
         {
@@ -212,18 +209,18 @@ public class CharacterController2D : MonoBehaviour
             Anim.SetBool("IsJumping", true);
 
         }
-        if (DoubleJump)
+        else if (DoubleJump)
         {
             DoubleJump = false;
             Rigidbody.AddForce(new Vector2(0f, height), ForceMode2D.Impulse);
-            Anim.SetBool("IsJumping", true);
+
             Anim.SetBool("DoubleJump", true);
         }
         if (IsFrontBlocked)
         {
             Rigidbody.gravityScale = 0;
-            
-            
+
+
             if (IsFacingRight)
             {
                 Rigidbody.AddForce(new Vector2(0f, height), ForceMode2D.Impulse);
@@ -237,12 +234,15 @@ public class CharacterController2D : MonoBehaviour
             Anim.SetBool("IsJumping", true);
         }
     }
-    
+
     // Move must be called last!
     public void Move(float offsetX)
     {
+        if (offsetX != 0)
+        {
+            Anim.SetBool("IsRunning", true);
+        }
 
-        Anim.SetBool("IsRunning", true);
         //only control the player if grounded or airControl is turned on
         if (IsGrounded || m_AirControl)
         {
@@ -286,6 +286,15 @@ public class CharacterController2D : MonoBehaviour
                 Flip();
             }
         }
-        
+
+    }
+
+    public void Death()
+    {
+        Anim.SetTrigger("Dying");
+        IsDead = true;
+        UIManager.Instance.ActivateRespawnButton();
+        // UIManager - Activate red border
+        // Place Redborder sprite as a child into the Respawn button.
     }
 }

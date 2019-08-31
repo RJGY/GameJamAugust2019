@@ -19,6 +19,24 @@ public class UIManager : MonoBehaviour
     public Slider manaBar;
     public Slider staminaBar;
 
+    public Button respawnButton;
+    private void Start()
+    {
+        respawnButton.gameObject.SetActive(false);
+    }
+
+    public void ActivateRespawnButton()
+    {
+        if (respawnButton.gameObject.activeInHierarchy)
+        {
+            respawnButton.gameObject.SetActive(false);
+        }
+
+        else
+        {
+            respawnButton.gameObject.SetActive(true);
+        }
+    }
     public void UpdateScore(int score)
     {
         // Change the score Text to updated value
