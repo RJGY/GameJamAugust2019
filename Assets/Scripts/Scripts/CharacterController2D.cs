@@ -120,6 +120,7 @@ public class CharacterController2D : MonoBehaviour
                 IsFrontBlocked = true;
                 Anim.SetBool("IsFrontBlocked", true);
                 Debug.Log("FB");
+
             }
         }
         colliders = Physics2D.OverlapCircleAll(m_TopCheck.position, m_TopCheckRadius, m_WhatIsGround);
@@ -128,6 +129,8 @@ public class CharacterController2D : MonoBehaviour
             if (colliders[i].gameObject != gameObject)
             {
                 IsTopBlocked = true;
+                
+                
             }
         }
         colliders = Physics2D.OverlapCircleAll(m_AttackCheck.position, m_AttackCheckRadius, m_WhatIsEnemy);
@@ -190,12 +193,18 @@ public class CharacterController2D : MonoBehaviour
             {
                 IsClimbing = true;
                 Anim.SetBool("IsClimbing", true);
+                if (IsTopBlocked)
+                {
+                    Anim.SetBool("Topside", true);
+                    
+                }
             }
         }
         else
         {
             IsClimbing = false;
             Anim.SetBool("IsClimbing", false);
+            
         }
 
         if (IsClimbing)
@@ -217,15 +226,15 @@ public class CharacterController2D : MonoBehaviour
             // Add a vertical force to the player.
             IsGrounded = false;
             Rigidbody.AddForce(new Vector2(0f, height), ForceMode2D.Impulse);
-            
+            Anim.SetBool("IsJumping", true);
 
         }
         else if (DoubleJump)
         {
             DoubleJump = false;
             Rigidbody.AddForce(new Vector2(0f, height), ForceMode2D.Impulse);
-
-           
+            Anim.SetBool("IsJumping", true);
+            Anim.SetBool("DoubleJump", true);
         }
         if (IsFrontBlocked)
         {
