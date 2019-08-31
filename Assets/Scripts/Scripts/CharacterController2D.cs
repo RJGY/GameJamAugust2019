@@ -76,7 +76,7 @@ public class CharacterController2D : MonoBehaviour
         //Ray ladderRay = new Ray(m_LadderCheck.position, Vector3.up);
         //Gizmos.DrawLine(ladderRay.origin, ladderRay.origin + ladderRay.direction * m_LadderRayLength);
     }
-    private void AnimateDefault()
+    public void AnimateDefault()
     {
         if (HasParameter("IsGrounded", Anim))
             Anim.SetBool("IsGrounded", IsGrounded);
