@@ -196,7 +196,7 @@ public class CharacterController2D : MonoBehaviour
             if (IsFacingRight)
             {
                 Rigidbody.AddForce(new Vector2(0f, height), ForceMode2D.Impulse);
-                Rigidbody.AddForce(new Vector2(height, 0f), ForceMode2D.Impulse);
+                Rigidbody.AddForce(new Vector2(-height, 0f), ForceMode2D.Impulse);
             }
             if (!IsFacingRight)
             {
