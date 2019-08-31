@@ -62,7 +62,7 @@ public class CharacterController2D : MonoBehaviour
         Rigidbody = GetComponent<Rigidbody2D>();
         Anim = GetComponent<Animator>();
         m_OriginalGravityScale = Rigidbody.gravityScale;
-
+        IsHurt = false;
         if (OnLandEvent == null)
             OnLandEvent = new UnityEvent();
     }
@@ -143,7 +143,11 @@ public class CharacterController2D : MonoBehaviour
         {
             if (colliders[i].gameObject != gameObject)
             {
-                IsHurt = true;
+                if (!IsHurt)
+                {
+                    Death();
+                    
+                }
             }
         }
 
@@ -187,8 +191,6 @@ public class CharacterController2D : MonoBehaviour
                 IsClimbing = true;
                 Anim.SetBool("IsClimbing", true);
             }
-
-
         }
         else
         {
@@ -300,13 +302,12 @@ public class CharacterController2D : MonoBehaviour
 
     public void Death()
     {
-        if (IsHurt == true)
-        {
             Anim.SetTrigger("Dying");
             IsDead = true;
             UIManager.Instance.ActivateRespawnButton();
-            // UIManager - Activate red border
-            // Place Redborder sprite as a child into the Respawn button.
-        }
+        // UIManager - Activate red border
+        // Place Redborder sprite as a child into the Respawn button.        
+        IsHurt = true;
+
     }
 }
