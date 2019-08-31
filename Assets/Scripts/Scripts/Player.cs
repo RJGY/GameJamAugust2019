@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
             bool isJumping = Input.GetButtonDown("Jump");
-            if (Input.GetButttonDown(e))
+            if (Input.GetButtonDown("Fire1"))
             {
                 controller.Attack();
             }
