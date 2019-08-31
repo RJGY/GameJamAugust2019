@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
 
     public int score = 0; // ScoreKeeping
 
+    public bool gameEnded = false;
+
     public void AddScore(int scoretoAdd)
     {
         // Increase Score Value by incoming score
@@ -23,6 +25,10 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.UpdateScore(score);
     }
     
+    public void GameOver()
+    {
+        gameEnded = true;
+    }
 
     //Reloads the Current Level
     public void Restart()
