@@ -70,8 +70,8 @@ public class CharacterController2D : MonoBehaviour
         Gizmos.color = Color.blue;
         Ray groundRay = new Ray(transform.position, Vector3.down);
         Gizmos.DrawLine(groundRay.origin, groundRay.origin + groundRay.direction * m_GroundRayLength);
+       
 
-        
         //Gizmos.color = Color.red;
         //Ray ladderRay = new Ray(m_LadderCheck.position, Vector3.up);
         //Gizmos.DrawLine(ladderRay.origin, ladderRay.origin + ladderRay.direction * m_LadderRayLength);
@@ -85,7 +85,36 @@ public class CharacterController2D : MonoBehaviour
             Anim.SetBool("IsClimbing", IsClimbing);
 
         if (HasParameter("JumpY", Anim))
-            Anim.SetFloat("JumpY", Rigidbody.velocity.y);
+            Anim.SetFloat("JumpY", Rigidbody.velocity.y);//doesnt exist yet
+    }
+    private void LateUpdate()
+    {
+        if (Anim.GetBool("IsGrounded"))
+        {
+            Anim.SetBool("isJumping", !IsGrounded);
+
+        }
+        if (Anim.GetBool("IsFrontBlocked"))
+        {
+            Anim.SetBool("isJumping", false);
+
+        }
+        if (Anim.GetBool("IsFrontBlocked"))
+        {
+            Anim.SetBool("IsClimbing", false);
+
+        }
+        if (Anim.GetBool("IsClimbing"))
+        {
+            Anim.SetBool("isJumping", !IsClimbing);
+
+        }
+        if (Anim.GetBool("isJumping"))
+        {
+            Anim.SetBool("IsRunning", false);
+
+        }
+
     }
     private void FixedUpdate()
     {
@@ -116,6 +145,7 @@ public class CharacterController2D : MonoBehaviour
             if (colliders[i].gameObject != gameObject)
             {
                 IsFrontBlocked = true;
+                Debug.Log("FB");
             }
         }
         colliders = Physics2D.OverlapCircleAll(m_TopCheck.position, m_TopCheckRadius, m_WhatIsGround);
@@ -182,6 +212,7 @@ public class CharacterController2D : MonoBehaviour
             // Add a vertical force to the player.
             IsGrounded = false;
             Rigidbody.AddForce(new Vector2(0f, height), ForceMode2D.Impulse);
+          
 
         }
         if (DoubleJump)
@@ -244,13 +275,13 @@ public class CharacterController2D : MonoBehaviour
             Rigidbody.velocity = Vector3.SmoothDamp(Rigidbody.velocity, targetVelocity, ref velocity, m_MovementSmoothing);
 
             // If the input is moving the player right and the player is facing left...
-            if (offsetX > 0 && !IsFacingRight)
+            if (offsetX > 0 && IsFacingRight)
             {
                 // ... flip the player.
                 Flip();
             }
             // Otherwise if the input is moving the player left and the player is facing right...
-            else if (offsetX < 0 && IsFacingRight)
+            else if (offsetX < 0 && !IsFacingRight)
             {
                 // ... flip the player.
                 Flip();
