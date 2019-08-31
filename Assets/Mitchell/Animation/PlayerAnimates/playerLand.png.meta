@@ -1,15 +1,11 @@
 fileFormatVersion: 2
-guid: 898c9bbbed18cd7409189ace56d2e1ad
+guid: 108f6defc2e336d46bf75a114a5f251e
 TextureImporter:
   fileIDToRecycleName:
-    21300000: playerClimb_0
-    21300002: playerClimb_1
-    21300004: playerClimb_2
-    21300006: playerClimb_3
-    21300008: playerClimb_4
-    21300010: playerClimb_5
-    21300012: playerClimb_6
-    21300014: playerClimb_7
+    21300000: playerLand_0
+    21300002: playerLand_1
+    21300004: playerLand_2
+    21300006: playerLand_3
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -92,13 +88,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: playerClimb_0
+      name: playerLand_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 37
-        height: 58
+        width: 48
+        height: 61
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -106,19 +102,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d8da9b8c33a6924aa2d003fc322394b
+      spriteID: 5bb1773846867dc4aa06853e5007491e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: playerClimb_1
+      name: playerLand_1
       rect:
         serializedVersion: 2
-        x: 37
+        x: 48
         y: 0
-        width: 37
-        height: 58
+        width: 48
+        height: 61
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -126,19 +122,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a6642ecef4e97c4bb6fb678a5eee2f8
+      spriteID: aaacbe2812bcd324d9c243ea7187147d
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: playerClimb_2
+      name: playerLand_2
       rect:
         serializedVersion: 2
-        x: 74
+        x: 96
         y: 0
-        width: 37
-        height: 58
+        width: 48
+        height: 61
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,19 +142,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 519a7b294b1881b4cb8343d70a0f9980
+      spriteID: b081c3a936f24714fa2102ba7a3fc6f6
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: playerClimb_3
+      name: playerLand_3
       rect:
         serializedVersion: 2
-        x: 111
+        x: 144
         y: 0
-        width: 37
-        height: 58
+        width: 48
+        height: 61
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,27 +162,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15c8eecb0830f264ea4932c36db30ab9
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: playerClimb_4
-      rect:
-        serializedVersion: 2
-        x: 148
-        y: 0
-        width: 37
-        height: 58
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ee7098c7a3aa49e4981019a75fd82851
+      spriteID: 7d4bc16b98cb0ee48bedead9780c1646
       vertices: []
       indices: 
       edges: []
@@ -194,7 +170,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: bb0fa46379e495b49a4f1fe40920d597
+    spriteID: 6f7d9220815a58c4a9451c3f23da864b
     vertices: []
     indices: 
     edges: []

@@ -56,6 +56,7 @@ public class Player : MonoBehaviour
                 controller.Jump(jumpHeight);
 
             }
+     
             controller.Climb(vertical * climbSpeed);
         
             
