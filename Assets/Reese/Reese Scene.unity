@@ -1352,6 +1352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
+  gameEnded: 0
 --- !u!1 &2105030530
 GameObject:
   m_ObjectHideFlags: 0
@@ -1631,11 +1632,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Turret
-      objectReference: {fileID: 0}
-    - target: {fileID: 7068456409376494296, guid: be1e14db96da6f24e8ce390440dd0f2b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7068456409376494297, guid: be1e14db96da6f24e8ce390440dd0f2b,
         type: 3}
