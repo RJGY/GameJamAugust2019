@@ -189,7 +189,7 @@ Transform:
   m_LocalScale: {x: 8, y: 8, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &130368457
 GameObject:
@@ -268,7 +268,7 @@ Transform:
   m_LocalScale: {x: 8, y: 8, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &270186584
 GameObject:
@@ -312,7 +312,7 @@ GameObject:
   m_Layer: 0
   m_Name: Point 1
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -562,7 +562,7 @@ GameObject:
   - component: {fileID: 728100118}
   - component: {fileID: 728100117}
   - component: {fileID: 728100116}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -758,9 +758,9 @@ GameObject:
   - component: {fileID: 1023022363}
   - component: {fileID: 1023022361}
   - component: {fileID: 1023022362}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -876,9 +876,10 @@ GameObject:
   - component: {fileID: 1099786143}
   - component: {fileID: 1099786146}
   - component: {fileID: 1099786142}
-  m_Layer: 0
+  - component: {fileID: 1099786147}
+  m_Layer: 10
   m_Name: Runner
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -951,13 +952,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1099786141}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 8, y: 3, z: -1.6582031}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1461858251}
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 2052964373}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1099786146
 MonoBehaviour:
@@ -972,13 +973,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypointParent: {fileID: 1646682227}
-  waypointDistance: 0
+  waypointDistance: 0.1
   speed: 3
   currentWayPoint: 1
   rotateCount: 0
   layer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1024
+  facingLeft: 0
+  facingRight: 1
+--- !u!50 &1099786147
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099786141}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 7
 --- !u!1 &1321069601
 GameObject:
   m_ObjectHideFlags: 0
@@ -1021,7 +1045,7 @@ GameObject:
   - component: {fileID: 1351829132}
   - component: {fileID: 1351829131}
   - component: {fileID: 1351829130}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1109,7 +1133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1408878238}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Gun
   m_TagString: Gun
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -1142,7 +1166,7 @@ GameObject:
   - component: {fileID: 1461858254}
   - component: {fileID: 1461858253}
   - component: {fileID: 1461858252}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1295,7 +1319,7 @@ Transform:
   - {fileID: 413536872}
   - {fileID: 2105030531}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1735294010
 GameObject:
@@ -1310,9 +1334,9 @@ GameObject:
   - component: {fileID: 1735294013}
   - component: {fileID: 1735294015}
   - component: {fileID: 1735294012}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Turret
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1643,7 +1667,7 @@ Transform:
   m_LocalScale: {x: 8, y: 8, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1951035704
 GameObject:
@@ -1739,7 +1763,7 @@ GameObject:
   - component: {fileID: 2016829556}
   - component: {fileID: 2016829555}
   - component: {fileID: 2016829554}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Gun Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1853,6 +1877,7 @@ Transform:
   - {fileID: 1624173451}
   - {fileID: 769042330}
   - {fileID: 1735294011}
+  - {fileID: 1099786145}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1881,7 +1906,7 @@ GameObject:
   m_Layer: 0
   m_Name: Point 2
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
