@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
 
     public int score = 0; // ScoreKeeping
 
-    
     public void AddScore(int scoretoAdd)
     {
         // Increase Score Value by incoming score
