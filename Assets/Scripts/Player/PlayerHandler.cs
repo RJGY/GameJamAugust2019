@@ -9,9 +9,12 @@ public class PlayerHandler : MonoBehaviour
     public float maxHealth, maxMana, maxStamina;
     public float currentHealth, currentMana, currentStamina;
 
-    public Slider healthBar;
-    public Slider manaBar;
-    public Slider staminaBar;
+    private UIManager _uiManager;
+
+    private void Awake()
+    {
+        _uiManager = GetComponent<UIManager>();
+    }
 
     void Start()
     {
@@ -26,20 +29,20 @@ public class PlayerHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (healthBar.value != Mathf.Clamp01(currentHealth / maxHealth))
+        if (_uiManager.healthBar.value != Mathf.Clamp01(currentHealth / maxHealth))
         {
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-            healthBar.value = Mathf.Clamp01(currentHealth / maxHealth);
+            _uiManager.healthBar.value = Mathf.Clamp01(currentHealth / maxHealth);
         }
-        if (manaBar.value != Mathf.Clamp01(currentMana / maxMana))
+        if (_uiManager.manaBar.value != Mathf.Clamp01(currentMana / maxMana))
         {
             currentMana = Mathf.Clamp(currentMana, 0, maxMana);
-            manaBar.value = Mathf.Clamp01(currentMana / maxMana);
+            _uiManager.manaBar.value = Mathf.Clamp01(currentMana / maxMana);
         }
-        if (staminaBar.value != Mathf.Clamp01(currentStamina / maxStamina))
+        if (_uiManager.staminaBar.value != Mathf.Clamp01(currentStamina / maxStamina))
         {
             currentStamina = Mathf.Clamp(currentStamina, 0, maxStamina);
-            staminaBar.value = Mathf.Clamp01(currentStamina / maxStamina);
+            _uiManager.staminaBar.value = Mathf.Clamp01(currentStamina / maxStamina);
         }
     }
 }
