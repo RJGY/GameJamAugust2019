@@ -11,26 +11,27 @@ public class Bullet : MonoBehaviour
 
     private bool movingToRight = false;
     private bool movingToLeft = false;
-    private float timeExisted;
+
+    private Vector3 startingPoint;
+    private Vector3 expirationPoint;
 
     // Start is called before the first frame update
     void Start()
     {
-        timeExisted = Time.time + 8;
+        startingPoint = transform.position;
         // Change this later on to the player script.
         currentPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-
-        timeExisted = Time.realtimeSinceStartup;
 
         if ((currentPlayer.position.x - transform.position.x) < 0) // If player is on the left.
         {
             transform.SetPositionAndRotation(transform.position, Quaternion.Euler(transform.rotation.x, transform.rotation.y, 90f));
             movingToRight = true;
+            
         }
 
         else
         {
-            transform.SetPositionAndRotation(transform.position, Quaternion.Euler(transform.rotation.x, transform.rotation.y, 270f));
+            transform.SetPositionAndRotation(transform.position, Quaternion.Euler(transform.rotation.x, transform.rotation.y, -90f));
             movingToLeft = true;
         }
     }
@@ -38,10 +39,14 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Change expiration to a horizontal distance.
+
+        /*
         if (Time.time >= timeExisted)
         {
             Destroy(gameObject);
         }
+        */
 
         if(movingToRight)
         {

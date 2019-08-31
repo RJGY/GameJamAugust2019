@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 namespace Reese
 {
-
+    // TODO - Give the guard the ability to spray the bullets. bullets go everywhere in a 30* cone.
     public class Guard : MonoBehaviour
     {
         private Transform currentPlayer = null;
@@ -19,6 +19,9 @@ namespace Reese
         public float speed = 2f;
         public int currentWayPoint = 1;
         public int rotateCount;
+
+        //Animation stuff.
+        public Animator anim;
 
         // For gun.
         public Transform gunPosition;
@@ -130,13 +133,11 @@ namespace Reese
         {
             if(stopRotating)
             {
-                Debug.Log("Just rotated");
                 stopRotating = false;
             }
 
             if(stopShooting)
             {
-                Debug.Log("Just shot a dude");
                 stopShooting = false;
             }
         }
