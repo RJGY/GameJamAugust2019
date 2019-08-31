@@ -143928,45 +143928,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8800165919391208230, guid: 450cacd2358dc3544b9c5b1331d232f0,
+    - target: {fileID: 8800165918722094334, guid: 450cacd2358dc3544b9c5b1331d232f0,
         type: 3}
-      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8800165919391208230, guid: 450cacd2358dc3544b9c5b1331d232f0,
-        type: 3}
-      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8800165919391208230, guid: 450cacd2358dc3544b9c5b1331d232f0,
-        type: 3}
-      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8800165919391208230, guid: 450cacd2358dc3544b9c5b1331d232f0,
-        type: 3}
-      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1990262602}
-    - target: {fileID: 8800165919391208230, guid: 450cacd2358dc3544b9c5b1331d232f0,
-        type: 3}
-      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Death
-      objectReference: {fileID: 0}
-    - target: {fileID: 8800165919391208230, guid: 450cacd2358dc3544b9c5b1331d232f0,
-        type: 3}
-      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 8800165919391208230, guid: 450cacd2358dc3544b9c5b1331d232f0,
-        type: 3}
-      propertyPath: m_WhatIsEnemy.m_Bits
-      value: 2048
-      objectReference: {fileID: 0}
-    - target: {fileID: 8800165919391208255, guid: 450cacd2358dc3544b9c5b1331d232f0,
-        type: 3}
-      propertyPath: m_BodyType
-      value: 0
+      propertyPath: m_LocalPosition.y
+      value: -1.41
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 450cacd2358dc3544b9c5b1331d232f0, type: 3}
