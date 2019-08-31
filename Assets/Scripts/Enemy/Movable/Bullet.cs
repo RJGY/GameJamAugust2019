@@ -13,7 +13,6 @@ public class Bullet : MonoBehaviour
     private bool movingToLeft = false;
 
     private Vector3 startingPoint;
-    private Vector3 expirationPoint;
 
     // Start is called before the first frame update
     void Start()
@@ -40,13 +39,11 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         // Change expiration to a horizontal distance.
-
-        /*
-        if (Time.time >= timeExisted)
+        if (Vector2.Distance(startingPoint, transform.position) > 10f)
         {
             Destroy(gameObject);
         }
-        */
+
 
         if(movingToRight)
         {
@@ -56,5 +53,10 @@ public class Bullet : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x + 9, transform.position.y), bulletSpeed * Time.deltaTime);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Destroy(gameObject);
     }
 }
