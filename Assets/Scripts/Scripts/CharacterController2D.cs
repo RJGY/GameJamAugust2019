@@ -138,7 +138,14 @@ public class CharacterController2D : MonoBehaviour
                 CanHurt = true;
             }
         }
-        
+        colliders = Physics2D.OverlapCircleAll(m_HitBox.position, m_HitBoxRadius, m_WhatIsEnemy);
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (colliders[i].gameObject != gameObject)
+            {
+                IsHurt = true;
+            }
+        }
 
     }
 
@@ -152,6 +159,7 @@ public class CharacterController2D : MonoBehaviour
         }
 
     }
+    
 
     public void Flip()
     {
@@ -292,10 +300,13 @@ public class CharacterController2D : MonoBehaviour
 
     public void Death()
     {
-        Anim.SetTrigger("Dying");
-        IsDead = true;
-        UIManager.Instance.ActivateRespawnButton();
-        // UIManager - Activate red border
-        // Place Redborder sprite as a child into the Respawn button.
+        if (IsHurt == true)
+        {
+            Anim.SetTrigger("Dying");
+            IsDead = true;
+            UIManager.Instance.ActivateRespawnButton();
+            // UIManager - Activate red border
+            // Place Redborder sprite as a child into the Respawn button.
+        }
     }
 }

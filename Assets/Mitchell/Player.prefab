@@ -182,6 +182,9 @@ MonoBehaviour:
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 256
+  m_WhatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 1024
   m_GroundCheck: {fileID: 8800165918722094334}
   m_FrontCheck: {fileID: 8800165919956458036}
   m_TopCheck: {fileID: 8800165918512971357}
@@ -283,7 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1fa00168c52b024fad24083a2a9b87f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpHeight: 7
+  jumpHeight: 10
   climbSpeed: 10
   moveSpeed: 10
   curPortal: 10
