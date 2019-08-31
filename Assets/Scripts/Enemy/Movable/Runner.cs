@@ -27,7 +27,7 @@ public class Runner : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x - 2, transform.position.y, transform.position.z));
+        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x - 1, transform.position.y, transform.position.z));
     }
 
     // Update is called once per frame
@@ -102,15 +102,8 @@ public class Runner : MonoBehaviour
     {
         if ((currentPlayer.position.x - transform.position.x) < 0) // Move to left
         {
-            Debug.Log("I tried.");
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, 2f,~layer);
-            if (hit.collider != null)
-            {
-                Debug.Log("Moving towards player but i will stop infront of a wall.");
-                Debug.Log("I shouldnt exist");
-            }
-
-            else
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, 1f, ~layer);
+            if (hit.collider == null)
             {
                 transform.position = Vector2.MoveTowards(transform.position, new Vector2(currentPlayer.position.x, transform.position.y), speed * Time.deltaTime);
                 Debug.Log("NOTHING HERE");
@@ -120,16 +113,7 @@ public class Runner : MonoBehaviour
         else
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right); // Move to right
-            if (hit.collider != null)
-            {
-                float distanceOfRaycast = Mathf.Abs(hit.point.x - transform.position.x);
-                if (distanceOfRaycast > 0.5f)
-                {
-                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(currentPlayer.position.x, transform.position.y), speed * Time.deltaTime);
-                }
-            }
-
-            else
+            if (hit.collider == null)
             {
                 transform.position = Vector2.MoveTowards(transform.position, new Vector2(currentPlayer.position.x, transform.position.y), speed * Time.deltaTime);
             }
@@ -147,11 +131,13 @@ public class Runner : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log(collision.transform.name);
         if (collision.CompareTag("Player"))
         {
             currentPlayer = collision.transform;
         }
     }
+
 
     private void OnTriggerExit2D(Collider2D collision)
     {
