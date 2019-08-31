@@ -146,6 +146,14 @@ public class CharacterController2D : MonoBehaviour
     }
 
    
+    public void Attack()
+    {
+        if (CanHurt == true)
+        {
+            
+        }
+
+    }
 
     public void Flip()
     {
