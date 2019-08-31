@@ -420,7 +420,6 @@ GameObject:
   - component: {fileID: 545811469}
   - component: {fileID: 545811473}
   - component: {fileID: 545811472}
-  - component: {fileID: 545811471}
   - component: {fileID: 545811470}
   - component: {fileID: 545811474}
   m_Layer: 8
@@ -458,25 +457,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
---- !u!95 &545811471
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 545811468}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e8c7fcfe04584704dbf091c4469fb7a8, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!483693784 &545811472
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -143852,7 +143832,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1229084153}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.191554, y: 7.2095137, z: 0}
+  m_LocalPosition: {x: -12.37, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -144918,6 +144898,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_MovementSmoothing
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800165919956458036, guid: 450cacd2358dc3544b9c5b1331d232f0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.85
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 450cacd2358dc3544b9c5b1331d232f0, type: 3}

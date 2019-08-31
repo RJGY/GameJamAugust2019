@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     public float jumpHeight = 5f; // how high he jumps
     public float climbSpeed = 10f; // how fast he climbs
     public float moveSpeed = 10f; //how fast he moves
-    public float curPortal = 10f; 
+    public float curPortal = 10f;
     //private Transform curPortal;
     private CharacterController2D controller;
     private Animator animator;
@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
 
     }
-    
+
     /*/private void OnDrawGizmos()
     {
         if (curPortal != null)
@@ -44,23 +44,31 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-            
-            float horizontal = Input.GetAxis("Horizontal");
-            float vertical = Input.GetAxis("Vertical");
-            bool isJumping = Input.GetButtonDown("Jump");
 
-            if (isJumping)
+
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+        bool isJumping = Input.GetButtonDown("Jump");
+
+        if (isJumping)
+        {
+            if (controller.IsGrounded)
             {
                 animator.SetBool("isJumping", true);
-                controller.Jump(jumpHeight);
-
             }
-     
-            controller.Climb(vertical * climbSpeed);
-        
-            
-            controller.Move(horizontal * moveSpeed);
-        
+            if (!controller.IsGrounded)
+            {
+                animator.SetBool("DoubleJump", true);
+            }
+            controller.Jump(jumpHeight);
+
+
+        }
+
+        controller.Climb(vertical * climbSpeed);
+
+
+        controller.Move(horizontal * moveSpeed);
+
     }
 }
