@@ -33,10 +33,6 @@ namespace Reese
         void OnDeath()
         {
 
-            
-            // if (guard)
-            // anim.DeathAnimation
-
             if (triggerEvent != null)
             {
                 Destroy(triggerEvent);
