@@ -17,9 +17,9 @@ public class CharacterController2D : MonoBehaviour
     //[SerializeField] private LayerMask m_WhatIsLadder;                          // A mask determining what is ladder to the character
     [SerializeField] private Transform m_GroundCheck;                           // A position marking where to check if the player is grounded.
     //[SerializeField] private Transform m_LadderCheck;                           // A position marking where the starting point of ladder ray is.
-    [SerializeField] private Transform m_FrontCheck;                            // A position makring where to check if the player is not hitting anything
+    [SerializeField] private Transform m_FrontCheck, m_TopCheck;                            // A position makring where to check if the player is not hitting anything
     [SerializeField] private float m_GroundedRadius = .05f;                      // Radius of the overlap circle to determine if grounded
-    [SerializeField] private float m_FrontCheckRadius = .05f;                      // Radius of the overlap circle to determine if front is blocked
+    [SerializeField] private float m_FrontCheckRadius = .05f, m_TopCheckRadius = .05f;                    // Radius of the overlap circle to determine if front is blocked
     [SerializeField] private float m_GroundRayLength = .2f;                     // Length of the ray beneith controller
     //[SerializeField] private float m_LadderRayLength = .5f;                     // Length of the ray above controller
 
@@ -33,7 +33,10 @@ public class CharacterController2D : MonoBehaviour
     public bool IsGrounded { get; private set; }
     public bool IsClimbing { get; private set; }
     public bool IsFrontBlocked { get; private set; }
+    public bool IsTopBlocked { get; private set; }
+    public bool DoubleJump;
     public bool IsFacingRight { get; private set; } = true;
+    public float JumpAngle;
     public Rigidbody2D Rigidbody { get; private set; }
     public Animator Anim { get; private set; }
 
@@ -63,11 +66,12 @@ public class CharacterController2D : MonoBehaviour
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(m_GroundCheck.position, m_GroundedRadius);
         Gizmos.DrawWireSphere(m_FrontCheck.position, m_FrontCheckRadius);
-
+        Gizmos.DrawWireSphere(m_TopCheck.position, m_TopCheckRadius);
         Gizmos.color = Color.blue;
         Ray groundRay = new Ray(transform.position, Vector3.down);
         Gizmos.DrawLine(groundRay.origin, groundRay.origin + groundRay.direction * m_GroundRayLength);
 
+        
         //Gizmos.color = Color.red;
         //Ray ladderRay = new Ray(m_LadderCheck.position, Vector3.up);
         //Gizmos.DrawLine(ladderRay.origin, ladderRay.origin + ladderRay.direction * m_LadderRayLength);
@@ -79,6 +83,7 @@ public class CharacterController2D : MonoBehaviour
         bool wasGrounded = IsGrounded;
         IsGrounded = false;
         IsFrontBlocked = false;
+        IsTopBlocked = false;
 
         // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
         // This can be done using layers instead but Sample Assets will not overwrite your project settings.
@@ -90,6 +95,7 @@ public class CharacterController2D : MonoBehaviour
                 IsGrounded = true;
                 if (!wasGrounded)
                     OnLandEvent.Invoke();
+                DoubleJump = true;
             }
         }
 
@@ -99,6 +105,14 @@ public class CharacterController2D : MonoBehaviour
             if (colliders[i].gameObject != gameObject)
             {
                 IsFrontBlocked = true;
+            }
+        }
+        colliders = Physics2D.OverlapCircleAll(m_TopCheck.position, m_TopCheckRadius, m_WhatIsGround);
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (colliders[i].gameObject != gameObject)
+            {
+                IsTopBlocked = true;
             }
         }
     }
@@ -134,12 +148,14 @@ public class CharacterController2D : MonoBehaviour
             Anim.SetFloat("ClimbSpeed", offsetY);
 
        //RaycastHit2D ladderHit = Physics2D.Raycast(m_LadderCheck.position, Vector2.up, m_LadderRayLength, m_WhatIsLadder);
-        if (IsFrontBlocked)
+        if (IsFrontBlocked||IsTopBlocked)
         {
             if (offsetY != 0)
             {
                 IsClimbing = true;
             }
+
+           
         }
         else
         {
@@ -158,17 +174,35 @@ public class CharacterController2D : MonoBehaviour
     }
     public void Jump(float height)
     {
+
         // If the player should jump...
         if (IsGrounded)
         {
             // Add a vertical force to the player.
             IsGrounded = false;
             Rigidbody.AddForce(new Vector2(0f, height), ForceMode2D.Impulse);
+
         }
-        if (IsClimbing)
+        if (DoubleJump)
         {
-            IsGrounded = false;
+            DoubleJump = false;
             Rigidbody.AddForce(new Vector2(0f, height), ForceMode2D.Impulse);
+        }
+        if (IsFrontBlocked)
+        {
+            Rigidbody.gravityScale = 0;
+            
+            
+            if (IsFacingRight)
+            {
+                Rigidbody.AddForce(new Vector2(0f, height), ForceMode2D.Impulse);
+                Rigidbody.AddForce(new Vector2(-height, 0f), ForceMode2D.Impulse);
+            }
+            if (!IsFacingRight)
+            {
+                Rigidbody.AddForce(new Vector2(0f, height), ForceMode2D.Impulse);
+                Rigidbody.AddForce(new Vector2(height, 0f), ForceMode2D.Impulse);
+            }
         }
     }
     
