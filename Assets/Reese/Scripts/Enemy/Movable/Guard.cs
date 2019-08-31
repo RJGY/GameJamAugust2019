@@ -11,14 +11,17 @@ namespace Reese
         private Transform currentPlayer = null;
 
         private Sprite guardSprite;
+        private bool stopRotating = false;
 
         // Everything for navmesh stuff - patrol
         public Transform waypointParent;
         private Transform[] points;
         public float waypointDistance;
-        public float speed = 3f;
-        public NavMeshAgent agent;
+        public float speed = 2f;
         public int currentWayPoint = 1;
+
+        // For gun.
+        public GameObject bulletPrefab;
 
         // Everything for facing player and shooting
         private float horizontalDistance = 9f;
@@ -30,7 +33,6 @@ namespace Reese
         {
             points = waypointParent.GetComponentsInChildren<Transform>();
             guardSprite = GetComponent<Sprite>();
-            Patrol();
         }
 
 
@@ -42,19 +44,21 @@ namespace Reese
 
                 float distance = Vector2.Distance(transform.position, currentPoint.position); // Finds distance between itself and the current point.
 
-                transform.position = Vector3.MoveTowards(transform.position, currentPoint.position, speed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, currentPoint.position, speed * Time.deltaTime);
 
                 if (distance < waypointDistance)
                 {
                     if (currentWayPoint < points.Length - 1)
                     {
                         currentWayPoint++;
+                        transform.Rotate(transform.rotation.x, transform.rotation.y + 180, transform.rotation.z);
                     }
 
                     else
                     {// if current waypoints is outside array length
                      // reset back to 1
                         currentWayPoint = 1;
+                        transform.Rotate(transform.rotation.x, transform.rotation.y + 180, transform.rotation.z);
                     }
                 }
             }
@@ -65,24 +69,38 @@ namespace Reese
                 float checkHorizontalDistance = Mathf.Abs(currentPlayer.position.x - transform.position.x);
                 float checkVerticalDistance = Mathf.Abs(currentPlayer.position.y - transform.position.y);
 
-                if (checkHorizontalDistance > horizontalDistance && checkVerticalDistance > verticalDistance)
+                if ((checkHorizontalDistance < horizontalDistance) && checkVerticalDistance < verticalDistance)
                 {
+
                     // Player has been detected.
+
+                    // Make guard look towards player.
+
+                    // Guard fires gun at player at an interval.
                 }
 
                 else
                 {
                     // Flip the guard, make it look like he is looking for the alien.
+                    if (!stopRotating)
+                    {
+                        transform.Rotate(transform.rotation.x, transform.rotation.y + 180, transform.rotation.z);
+                        stopRotating = true;
+                        Invoke("SwapStates", 1f);
+                    }
+
                     // Guard knows something ie here, but does not know here to look.
+
                 }
             }
         }
 
-        void Patrol()
+        void SwapStates()
         {
-            
-
-
+            if(stopRotating)
+            {
+                stopRotating = false;
+            }
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
