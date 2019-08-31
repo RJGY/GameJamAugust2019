@@ -51,6 +51,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
+  - m_Name: ClimbSpeed
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -209,8 +215,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: IsFrontBlocked
+  - m_ConditionMode: 3
+    m_ConditionEvent: ClimbSpeed
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102269967922605360}
@@ -667,7 +673,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Idle
-  m_Speed: 1
+  m_Speed: 0
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101597986957702806}
@@ -685,10 +691,10 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 7069873ad91810541ae13b3094748ff8, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
+  m_SpeedParameter: ClimbSpeed
+  m_MirrorParameter: IsFrontBlocked
   m_CycleOffsetParameter: 
-  m_TimeParameter: 
+  m_TimeParameter: ClimbSpeed
 --- !u!1102 &1102512597949073776
 AnimatorState:
   serializedVersion: 5
