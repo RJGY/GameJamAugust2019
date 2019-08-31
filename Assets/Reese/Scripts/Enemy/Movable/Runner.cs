@@ -17,11 +17,17 @@ public class Runner : MonoBehaviour
     // Everything for facing player and shooting
     private float horizontalDistance = 10f;
     private float verticalDistance = 1f;
-
+    public LayerMask layer;
     // Start is called before the first frame update
     void Start()
     {
         points = waypointParent.GetComponentsInChildren<Transform>();
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x - 2, transform.position.y, transform.position.z));
     }
 
     // Update is called once per frame
@@ -36,7 +42,6 @@ public class Runner : MonoBehaviour
 
         else
         {
-
             // Guard hears you.
             float checkHorizontalDistance = Mathf.Abs(currentPlayer.position.x - transform.position.x);
             float checkVerticalDistance = Mathf.Abs(currentPlayer.position.y - transform.position.y);
@@ -44,7 +49,7 @@ public class Runner : MonoBehaviour
             if ((checkHorizontalDistance < horizontalDistance) && checkVerticalDistance < verticalDistance)
             {
                 // Player has been detected.
-                transform.position = Vector2.MoveTowards(transform.position, currentPlayer.position, speed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, new Vector2(currentPlayer.position.x, transform.position.y), speed * Time.deltaTime);
             }
 
             else
@@ -61,7 +66,6 @@ public class Runner : MonoBehaviour
                 else if (rotateCount == 4)
                 {
                     Track();
-
                 }
             }
         }
@@ -98,28 +102,24 @@ public class Runner : MonoBehaviour
     {
         if ((currentPlayer.position.x - transform.position.x) < 0) // Move to left
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left);
+            Debug.Log("I tried.");
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, 2f,~layer);
             if (hit.collider != null)
             {
-                float distanceOfRaycast = Mathf.Abs(hit.point.x - transform.position.x);
-                
-                if (distanceOfRaycast < 0.5f)
-                {
-                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(currentPlayer.position.x, transform.position.y), speed * Time.deltaTime);
-                }
+                Debug.Log("Moving towards player but i will stop infront of a wall.");
+                Debug.Log("I shouldnt exist");
             }
 
             else
             {
-                
                 transform.position = Vector2.MoveTowards(transform.position, new Vector2(currentPlayer.position.x, transform.position.y), speed * Time.deltaTime);
+                Debug.Log("NOTHING HERE");
             }
-            
         }
 
         else
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right); // move to right
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right); // Move to right
             if (hit.collider != null)
             {
                 float distanceOfRaycast = Mathf.Abs(hit.point.x - transform.position.x);
@@ -141,7 +141,6 @@ public class Runner : MonoBehaviour
     {
         if (stopRotating)
         {
-            Debug.Log("Just rotated");
             stopRotating = false;
         }
     }
