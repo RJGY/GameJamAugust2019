@@ -52,14 +52,7 @@ public class Player : MonoBehaviour
 
         if (isJumping)
         {
-            if (controller.IsGrounded)
-            {
-                animator.SetBool("isJumping", true);
-            }
-            if (!controller.IsGrounded)
-            {
-                animator.SetBool("DoubleJump", true);
-            }
+            
             controller.Jump(jumpHeight);
 
 
