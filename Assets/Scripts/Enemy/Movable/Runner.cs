@@ -14,7 +14,7 @@ public class Runner : MonoBehaviour
     public int currentWayPoint = 1;
     public int rotateCount;
 
-    public float killRadius = 0.5f;
+    public float killRadius = 1f;
 
     // Everything for facing player and shooting
     private float horizontalDistance = 10f;

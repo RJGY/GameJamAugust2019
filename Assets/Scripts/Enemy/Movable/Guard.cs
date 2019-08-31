@@ -19,6 +19,7 @@ namespace Reese
         public float speed = 2f;
         public int currentWayPoint = 1;
         public int rotateCount;
+        public float killRadius = 1f;
 
         //Animation stuff.
         public Animator anim;
@@ -43,6 +44,7 @@ namespace Reese
 
         void Update()
         {
+            KillPlayer();
             Transform currentPoint = points[currentWayPoint]; // Gets current point.
 
             if (currentPlayer == null)
@@ -147,6 +149,19 @@ namespace Reese
             Instantiate(bulletPrefab, gunPosition.position, transform.rotation);
         }
 
+        void KillPlayer()
+        {
+            if (currentPlayer != null)
+            {
+                float distance = Vector2.Distance(transform.position, currentPlayer.position);
+                if (distance < killRadius)
+                {
+                    // Works but kills them over and over.
+                    SendMessage("Interact");
+                }
+            }
+        }
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.CompareTag("Player"))
@@ -154,6 +169,8 @@ namespace Reese
                 currentPlayer = collision.transform;
             }
         }
+
+
 
         private void OnTriggerExit2D(Collider2D collision)
         {
