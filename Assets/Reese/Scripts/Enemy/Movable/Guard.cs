@@ -114,6 +114,7 @@ namespace Reese
                         // Guard goes back to patrolling
                         transform.position = Vector2.MoveTowards(transform.position, currentPoint.position, speed * Time.deltaTime);
                         rotateCount = 0;
+                        currentPlayer = null;
                     }
 
                     // Guard knows something ie here, but does not know here to look.
