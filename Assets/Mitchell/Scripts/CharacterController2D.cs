@@ -165,6 +165,11 @@ public class CharacterController2D : MonoBehaviour
             IsGrounded = false;
             Rigidbody.AddForce(new Vector2(0f, height), ForceMode2D.Impulse);
         }
+        if (IsClimbing)
+        {
+            IsGrounded = false;
+            Rigidbody.AddForce(new Vector2(0f, height), ForceMode2D.Impulse);
+        }
     }
     
     // Move must be called last!
