@@ -62,6 +62,10 @@ public class Player : MonoBehaviour
 
 
         controller.Move(horizontal * moveSpeed);
+        if (controller.IsHurt)
+        {
+
+        }
 
     }
 }
