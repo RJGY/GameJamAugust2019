@@ -14,6 +14,8 @@ public class Runner : MonoBehaviour
     public int currentWayPoint = 1;
     public int rotateCount;
 
+    public float killRadius = 0.5f;
+
     // Everything for facing player and shooting
     private float horizontalDistance = 10f;
     private float verticalDistance = 1f;
@@ -51,9 +53,22 @@ public class Runner : MonoBehaviour
 
             if ((checkHorizontalDistance < horizontalDistance) && checkVerticalDistance < verticalDistance)
             {
-                ChangeRotation();
+                float checkDistance = transform.position.x - currentPoint.position.x;
+
+                if (checkDistance > 0 && !facingLeft)
+                {
+                    Debug.Log("Changed Rotation");
+                    ChangeRotation();
+                }
+                else if (!facingRight && checkDistance < 0)
+                {
+                    Debug.Log("Changed Rotation");
+                    ChangeRotation();
+                }
+
                 if (!stopRotating)
                 {
+                    KillPlayer();
                     transform.position = Vector2.MoveTowards(transform.position, new Vector2(currentPlayer.position.x, transform.position.y), speed * Time.deltaTime);
                 }
             }
@@ -129,6 +144,7 @@ public class Runner : MonoBehaviour
         }
         
         transform.position = Vector2.MoveTowards(transform.position, currentPoint.position, speed * Time.deltaTime);
+        
 
         if (distance < waypointDistance)
         {
@@ -190,6 +206,19 @@ public class Runner : MonoBehaviour
             // THIS COULD ALSO CAUSE A BUG TOO
         }
 
+    }
+
+    void KillPlayer()
+    {
+        if (currentPlayer != null)
+        {
+            float distance = Vector2.Distance(transform.position, currentPlayer.position);
+            if (distance < killRadius)
+            {
+                // Works but kills them over and over.
+                SendMessage("Interact");
+            }
+        }
     }
 
     void SwapStates()
