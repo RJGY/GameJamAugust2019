@@ -266,6 +266,9 @@ MonoBehaviour:
   m_WhatIsEnemy:
     serializedVersion: 2
     m_Bits: 2048
+  WhatIsMe:
+    serializedVersion: 2
+    m_Bits: 512
   m_GroundCheck: {fileID: 8800165918722094334}
   m_FrontCheck: {fileID: 8800165919956458036}
   m_TopCheck: {fileID: 8800165918512971357}

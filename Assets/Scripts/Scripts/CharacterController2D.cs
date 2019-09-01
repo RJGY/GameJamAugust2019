@@ -212,17 +212,15 @@ public class CharacterController2D : MonoBehaviour
             {
                 IsClimbing = true;
                 Anim.SetBool("IsClimbing", true);
-                if (IsTopBlocked)
-                {
-                    Anim.SetBool("Topside", true);
-                    
-                }
-                else 
-                {
-                    Anim.SetBool("Topside", false);
-                }
+                
             }
         }
+        if (IsTopBlocked)
+        {
+            Anim.SetBool("Topside", true);
+
+        }
+        
         else
         {
             IsClimbing = false;
@@ -253,12 +251,14 @@ public class CharacterController2D : MonoBehaviour
             
 
         }
-        else if (DoubleJump)
+        else if (DoubleJump||!IsGrounded)
         {
             DoubleJump = false;
             Rigidbody.AddForce(new Vector2(0f, height), ForceMode2D.Impulse);
-            Anim.SetBool("IsJumping", true);
-            Anim.SetBool("DoubleJump", true);
+            
+            Anim.SetTrigger("DoubleJump");
+            
+              
         }
         if (IsFrontBlocked)
         {
