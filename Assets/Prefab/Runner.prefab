@@ -60,6 +60,7 @@ MonoBehaviour:
     m_Bits: 1024
   facingLeft: 0
   facingRight: 1
+  Anim: {fileID: 5220133782473546964}
 --- !u!58 &6054386681984657615
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -133,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyDead: 0
-  anim: {fileID: 0}
+  anim: {fileID: 5220133782473546964}
 --- !u!95 &5220133782473546964
 Animator:
   serializedVersion: 3
