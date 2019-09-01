@@ -15,6 +15,8 @@ public class Guard : MonoBehaviour
     public int currentWayPoint = 1;
     public int rotateCount;
     public float killRadius = 1f;
+    public bool facingRight = true;
+    public bool facingLeft = false;
 
     // Animation stuff.
     public Animator anim;
@@ -107,11 +109,51 @@ public class Guard : MonoBehaviour
         }
     }
 
+    void ChangeRotation()
+    {
+        if (!stopRotating)
+        {
+            if (facingRight) // Turns you left
+            {
+                anim.SetBool("IsWalking", false);
+                facingLeft = true;
+                facingRight = false;
+                transform.SetPositionAndRotation(transform.position, Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z));
+                stopRotating = true;
+                Invoke("SwapStates", 1f);
+            }
+
+            else // Turns you right
+            {
+                anim.SetBool("IsWalking", false);
+                facingLeft = false;
+                facingRight = true;
+                transform.SetPositionAndRotation(transform.position, Quaternion.Euler(transform.rotation.x, 180, transform.rotation.z));
+                stopRotating = true;
+                Invoke("SwapStates", 1f);
+            }
+        }
+    }
+
     void Patrol()
     {
         Transform currentPoint = points[currentWayPoint]; // Gets current point.
 
         float distance = Vector2.Distance(transform.position, currentPoint.position); // Finds distance between itself and the current point.
+
+        float checkDistance = transform.position.x - currentPoint.position.x;
+
+        if (checkDistance > 0 && !facingLeft)
+        {
+            Debug.Log("Changed Rotation");
+            ChangeRotation();
+        }
+
+        else if (!facingRight && checkDistance < 0)
+        {
+            Debug.Log("Changed Rotation");
+            ChangeRotation();
+        }
 
         transform.position = Vector2.MoveTowards(transform.position, currentPoint.position, speed * Time.deltaTime);
 
@@ -120,15 +162,11 @@ public class Guard : MonoBehaviour
             if (currentWayPoint < points.Length - 1)
             {
                 currentWayPoint++;
-                transform.Rotate(transform.rotation.x, transform.rotation.y + 180, transform.rotation.z);
             }
 
             else
             {
-                // if current waypoints is outside array length
-                // reset back to 1
                 currentWayPoint = 1;
-                transform.Rotate(transform.rotation.x, transform.rotation.y + 180, transform.rotation.z);
                 rotateCount = 0;
             }
         }
