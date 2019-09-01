@@ -112771,5 +112771,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 790116987961533879, guid: 9222f8023bcd55a4ab6b300f0e6dc0db,
+        type: 3}
+      propertyPath: m_Name
+      value: SoldierAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717517667697631979, guid: 9222f8023bcd55a4ab6b300f0e6dc0db,
+        type: 3}
+      propertyPath: m_Name
+      value: Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992239559317729823, guid: 9222f8023bcd55a4ab6b300f0e6dc0db,
+        type: 3}
+      propertyPath: m_Name
+      value: TurretDeath
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9222f8023bcd55a4ab6b300f0e6dc0db, type: 3}
