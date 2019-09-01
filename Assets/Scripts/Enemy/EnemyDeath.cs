@@ -41,17 +41,20 @@ public class EnemyDeath : MonoBehaviour
         {
             // Play respective enemy death animation.
             guard.anim.SetTrigger("Dying");
+            SoundManager.Instance.PlaySound("SoldierDeath");
             Destroy(guard);
         }
 
         else if (runner != null)
         {
             runner.Anim.SetTrigger("Dying");
+            SoundManager.Instance.PlaySound("RunnerDeath");
             Destroy(runner);
         }
 
         else if (turret != null)
         {
+            SoundManager.Instance.PlaySound("TurretDeath");
             turret.anim.SetTrigger("Dying");
             Destroy(turret);
         }
