@@ -63,7 +63,7 @@ namespace Reese
                     // Player has been detected.
                     if ((currentPlayer.position.x - transform.position.x) < 0) // If player is on the right.
                     {
-                        transform.SetPositionAndRotation(transform.position, Quaternion.Euler(transform.rotation.x, 180f, transform.rotation.z));
+                        transform.SetPositionAndRotation(transform.position, Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z));
                         if (!stopShooting)
                         {
                             stopShooting = true;
@@ -73,7 +73,7 @@ namespace Reese
                     }
                     else // Player is on the left.
                     {
-                        transform.SetPositionAndRotation(transform.position, Quaternion.Euler(transform.rotation.x, 0f, transform.rotation.z));
+                        transform.SetPositionAndRotation(transform.position, Quaternion.Euler(transform.rotation.x, 180f, transform.rotation.z));
                         if (!stopShooting)
                         {
                             stopShooting = true;

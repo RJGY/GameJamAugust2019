@@ -106,7 +106,7 @@ public class Runner : MonoBehaviour
             {
                 facingLeft = true;
                 facingRight = false;
-                transform.SetPositionAndRotation(transform.position, Quaternion.Euler(transform.rotation.x, 180, transform.rotation.z));
+                transform.SetPositionAndRotation(transform.position, Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z));
                 stopRotating = true;
                 Invoke("SwapStates", 1f);
             }
@@ -115,7 +115,7 @@ public class Runner : MonoBehaviour
             {
                 facingLeft = false;
                 facingRight = true;
-                transform.SetPositionAndRotation(transform.position, Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z));
+                transform.SetPositionAndRotation(transform.position, Quaternion.Euler(transform.rotation.x, 180, transform.rotation.z));
                 stopRotating = true;
                 Invoke("SwapStates", 1f);
             }
