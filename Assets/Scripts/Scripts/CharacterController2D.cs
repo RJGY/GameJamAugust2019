@@ -158,6 +158,10 @@ public class CharacterController2D : MonoBehaviour
                 }
             }
         }
+        if (IsTopBlocked)
+        {
+            Anim.SetBool("TopSide", true);
+        }
 
     }
 
@@ -229,11 +233,8 @@ public class CharacterController2D : MonoBehaviour
                 
             }
         }
-        if (IsTopBlocked)
-        {
-            Anim.SetBool("TopSide", true);
-        }
         
+
 
         else
         {
