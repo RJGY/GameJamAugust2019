@@ -6,15 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Mitchell/scenes/Ambiza.unity
+    path: Assets/Mitchell/scenes/B3.unity
     guid: 647043bdb88a02d4b9d6146c10c6cd3e
   - enabled: 1
-    path: Assets/Mitchell/scenes/Ambiza2.unity
+    path: Assets/Mitchell/scenes/B2.unity
     guid: f843f19b669cdba459c7072cd2cd1b1f
   - enabled: 1
-    path: Assets/Mitchell/scenes/Maze.unity
+    path: Assets/Mitchell/scenes/B1.unity
     guid: 6b63409e7ace95543b56cbcf0a9f197d
   - enabled: 1
-    path: Assets/Mitchell/scenes/Boss.unity
+    path: Assets/Mitchell/scenes/Ground.unity
     guid: 22d8ed68285614346b5e320fa622c440
   m_configObjects: {}
