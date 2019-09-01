@@ -22,9 +22,9 @@ public class Runner : MonoBehaviour
     public LayerMask layer;
     public bool facingLeft = false;
     public bool facingRight = true;
-
-    // Start is called before the first frame update
-    void Start()
+    public Animator Anim;
+// Start is called before the first frame update
+void Start()
     {
         points = waypointParent.GetComponentsInChildren<Transform>();
     }
@@ -43,6 +43,7 @@ public class Runner : MonoBehaviour
         if (currentPlayer == null)
         {
             Patrol();
+            Anim.SetBool("IsWalking", true);
         }
 
         else
@@ -68,6 +69,7 @@ public class Runner : MonoBehaviour
 
                 if (!stopRotating)
                 {
+                    Anim.SetBool("IsWalking", true);
                     KillPlayer();
                     transform.position = Vector2.MoveTowards(transform.position, new Vector2(currentPlayer.position.x, transform.position.y), speed * Time.deltaTime);
                 }
@@ -125,6 +127,9 @@ public class Runner : MonoBehaviour
 
     void Patrol()
     {
+        Anim.SetBool("IsWalking", true);
+
+
         Transform currentPoint = points[currentWayPoint]; // Gets current point.
 
         float distance = Vector2.Distance(transform.position, currentPoint.position); // Finds distance between itself and the current point.
@@ -166,6 +171,8 @@ public class Runner : MonoBehaviour
 
     void Track()
     {
+        Anim.SetBool("IsWalking", true);
+
         if ((currentPlayer.position.x - transform.position.x) < 0) // Move to left
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, 1f, ~layer);
@@ -198,11 +205,17 @@ public class Runner : MonoBehaviour
                     transform.position = Vector2.MoveTowards(transform.position, new Vector2(currentPlayer.position.x, transform.position.y), speed * Time.deltaTime);
                 }
             }
+            else
+            {
+                
+                Anim.SetBool("IsWalking", false);
+            }
         }
 
         else
         {
             rotateCount = 0;
+            Anim.SetBool("IsWalking", false);
             // THIS COULD ALSO CAUSE A BUG TOO
         }
 
@@ -213,7 +226,12 @@ public class Runner : MonoBehaviour
         if (currentPlayer != null)
         {
             float distance = Vector2.Distance(transform.position, currentPlayer.position);
-            if (distance < killRadius)
+            if (distance < (killRadius + 1) && !GameManager.Instance.gameEnded)
+            {
+                Anim.SetTrigger("Attack");
+            }
+
+            if (distance < killRadius && !GameManager.Instance.gameEnded)
             {
                 // Works but kills them over and over.
                 SendMessage("Interact");

@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
             }
             if (isJumping)
             {
-                animator.SetBool("isJumping", true);
+                animator.SetBool("IsJumping", true);
                 controller.Jump(jumpHeight);
 
 

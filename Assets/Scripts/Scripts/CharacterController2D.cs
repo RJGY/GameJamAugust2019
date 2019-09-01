@@ -107,6 +107,8 @@ public class CharacterController2D : MonoBehaviour
                 if (!wasGrounded)
                     OnLandEvent.Invoke();
                 DoubleJump = true;
+                Anim.SetBool("IsGrounded", true);
+                Anim.SetBool("IsJumping", false);
 
 
             }
@@ -227,6 +229,7 @@ public class CharacterController2D : MonoBehaviour
             IsGrounded = false;
             Rigidbody.AddForce(new Vector2(0f, height), ForceMode2D.Impulse);
             Anim.SetBool("IsJumping", true);
+            
 
         }
         else if (DoubleJump)
@@ -311,9 +314,9 @@ public class CharacterController2D : MonoBehaviour
 
     public void Death()
     {
-            Anim.SetTrigger("Dying");
-            IsDead = true;
-            UIManager.Instance.ActivateRespawnButton();
+        Anim.SetTrigger("Dying");
+        IsDead = true;
+        UIManager.Instance.ActivateRespawnButton();
         GameManager.Instance.GameOver();
         // UIManager - Activate red border
         // Place Redborder sprite as a child into the Respawn button.        
