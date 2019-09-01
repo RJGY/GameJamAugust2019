@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f93b92e70f8ce0b45b117ac9046a108d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MovementSmoothing: 0
+  m_MovementSmoothing: 0.091
   m_AirControl: 1
   m_StickToSlopes: 1
   m_WhatIsGround:
