@@ -814,12 +814,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8800165919391208230, guid: 450cacd2358dc3544b9c5b1331d232f0,
         type: 3}
-      propertyPath: m_WhatIsEnemy.m_Bits
-      value: 2048
-      objectReference: {fileID: 0}
-    - target: {fileID: 1272856127, guid: 450cacd2358dc3544b9c5b1331d232f0, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
+      propertyPath: WhatIsMe.m_Bits
+      value: 512
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 450cacd2358dc3544b9c5b1331d232f0, type: 3}

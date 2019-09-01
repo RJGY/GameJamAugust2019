@@ -39,10 +39,8 @@ public class Turret : MonoBehaviour
 
     void SwapStates()
     {
-
         if (stopShooting)
         {
-            Debug.Log("Just shot a dude");
             stopShooting = false;
         }
     }
