@@ -49,7 +49,11 @@ public class Turret : MonoBehaviour
 
     void Shoot()
     {
-        Instantiate(bulletPrefab, gunPosition.position, transform.rotation);
+        if (!GameManager.Instance.gameEnded)
+        {
+            Instantiate(bulletPrefab, gunPosition.position, transform.rotation);
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
