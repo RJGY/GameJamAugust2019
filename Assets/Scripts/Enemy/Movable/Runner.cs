@@ -93,6 +93,7 @@ void Start()
 
     void Rotate()
     {
+        Anim.SetBool("IsWalking", false);
         Debug.Log("JUST ROTATED IN Rotate()");
         transform.Rotate(transform.rotation.x, transform.rotation.y + 180, transform.rotation.z);
         stopRotating = true;
@@ -106,6 +107,7 @@ void Start()
         {
             if (facingRight) // Turns you left
             {
+                Anim.SetBool("IsWalking", false);
                 facingLeft = true;
                 facingRight = false;
                 transform.SetPositionAndRotation(transform.position, Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z));
@@ -115,6 +117,7 @@ void Start()
 
             else // Turns you right
             {
+                Anim.SetBool("IsWalking", false);
                 facingLeft = false;
                 facingRight = true;
                 transform.SetPositionAndRotation(transform.position, Quaternion.Euler(transform.rotation.x, 180, transform.rotation.z));

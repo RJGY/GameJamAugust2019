@@ -31,10 +31,15 @@ public class Turret : MonoBehaviour
             {
                 if (!stopShooting)
                 {
+                    anim.SetBool("IsShooting", true);
                     stopShooting = true;
                     Shoot();
                     Invoke("SwapStates", 0.5f);
                 }
+            }
+            else
+            {
+                anim.SetBool("IsShooting", false);
             }
         }
     }

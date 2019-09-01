@@ -40,7 +40,7 @@ public class CharacterController2D : MonoBehaviour
     public bool CanHurt { get; private set; }
     public bool IsHurt { get; private set; }
     public bool DoubleJump;
-    public bool IsFacingRight { get; private set; } = true;
+    public bool IsFacingRight = true;
     public float JumpAngle;
 
     public bool IsDead { get; private set; } = false;
@@ -96,7 +96,6 @@ public class CharacterController2D : MonoBehaviour
         Anim.SetBool("IsGrounded", false);
         IsFrontBlocked = false;
         IsTopBlocked = false;
-        Anim.SetBool("TopSide", false);
         Anim.SetBool("IsRunning", false);
         Anim.SetBool("IsFrontBlocked", false);
         // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
@@ -107,8 +106,8 @@ public class CharacterController2D : MonoBehaviour
             if (colliders[i].gameObject != gameObject)
             {
                 IsGrounded = true;
-               
-                    
+
+
                 DoubleJump = true;
                 Anim.SetBool("IsGrounded", true);
                 Anim.SetBool("IsJumping", false);
@@ -134,8 +133,8 @@ public class CharacterController2D : MonoBehaviour
             if (colliders[i].gameObject != gameObject)
             {
                 IsTopBlocked = true;
-                
-                
+
+
             }
         }
         colliders = Physics2D.OverlapCircleAll(m_AttackCheck.position, m_AttackCheckRadius, m_WhatIsEnemy);
@@ -154,7 +153,7 @@ public class CharacterController2D : MonoBehaviour
                 if (!IsHurt)
                 {
                     Death();
-                    
+
                 }
             }
         }
@@ -169,24 +168,7 @@ public class CharacterController2D : MonoBehaviour
     public void Attack()
     {
         Anim.SetTrigger("Attack");
-        if (IsFacingRight)
-        {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, 2f, ~WhatIsMe);
-            if (hit.collider != null)
-            {
-                if (hit.collider.GetComponent<EnemyDeath>() != null)
-                {
-                    hit.collider.SendMessage("OnDeath");
-                }
-
-                else if (hit.collider.GetComponent<Bullet>() != null)
-                {
-                    hit.collider.SendMessage("Punched");
-                }
-            }
-        }
-
-        else
+        if (IsFacingRight) // ITS ACTUALLY FACING LEFT
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, 2f, ~WhatIsMe);
             if (hit.collider != null)
@@ -202,8 +184,27 @@ public class CharacterController2D : MonoBehaviour
                 }
             }
         }
+
+        else if(!IsFacingRight) // ITS ACTUALLY FACING RIGHT
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, 2f, ~WhatIsMe);
+            if (hit.collider != null)
+            {
+                if (hit.collider.GetComponent<EnemyDeath>() != null)
+                {
+                    hit.collider.SendMessage("OnDeath");
+                }
+
+                else if (hit.collider.GetComponent<Bullet>() != null)
+                {
+                    hit.collider.SendMessage("Punched");
+                }
+            }
+        }
+        
+
     }
-    
+
 
     public void Flip()
     {
@@ -230,7 +231,7 @@ public class CharacterController2D : MonoBehaviour
             {
                 IsClimbing = true;
                 Anim.SetBool("IsClimbing", true);
-                
+
             }
         }
         
@@ -240,7 +241,7 @@ public class CharacterController2D : MonoBehaviour
         {
             IsClimbing = false;
             Anim.SetBool("IsClimbing", false);
-            
+
         }
 
         if (IsClimbing)
@@ -263,17 +264,17 @@ public class CharacterController2D : MonoBehaviour
             IsGrounded = false;
             Rigidbody.AddForce(new Vector2(0f, height), ForceMode2D.Impulse);
             Anim.SetBool("IsJumping", true);
-            
+
 
         }
-        else if (DoubleJump||!IsGrounded)
+        else if (DoubleJump || !IsGrounded)
         {
             DoubleJump = false;
             Rigidbody.AddForce(new Vector2(0f, height), ForceMode2D.Impulse);
-            
+
             Anim.SetTrigger("DoubleJump");
-            
-              
+
+
         }
         if (IsFrontBlocked)
         {
