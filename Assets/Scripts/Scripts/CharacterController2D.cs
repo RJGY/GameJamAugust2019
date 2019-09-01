@@ -96,6 +96,7 @@ public class CharacterController2D : MonoBehaviour
         Anim.SetBool("IsGrounded", false);
         IsFrontBlocked = false;
         IsTopBlocked = false;
+        Anim.SetBool("TopSide", false);
         Anim.SetBool("IsRunning", false);
         Anim.SetBool("IsFrontBlocked", false);
         // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
@@ -230,10 +231,10 @@ public class CharacterController2D : MonoBehaviour
         }
         if (IsTopBlocked)
         {
-            Anim.SetBool("Topside", true);
-
+            Anim.SetBool("TopSide", true);
         }
         
+
         else
         {
             IsClimbing = false;
