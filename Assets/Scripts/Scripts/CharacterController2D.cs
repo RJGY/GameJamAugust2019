@@ -173,6 +173,11 @@ public class CharacterController2D : MonoBehaviour
                 {
                     hit.collider.SendMessage("OnDeath");
                 }
+
+                else if (hit.collider.GetComponent<Bullet>() != null)
+                {
+                    hit.collider.SendMessage("Punched");
+                }
             }
         }
 
@@ -181,7 +186,15 @@ public class CharacterController2D : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, 2f, ~WhatIsMe);
             if (hit.collider != null)
             {
+                if (hit.collider.GetComponent<EnemyDeath>() != null)
+                {
+                    hit.collider.SendMessage("OnDeath");
+                }
 
+                else if (hit.collider.GetComponent<Bullet>() != null)
+                {
+                    hit.collider.SendMessage("Punched");
+                }
             }
         }
     }

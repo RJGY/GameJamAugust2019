@@ -40,24 +40,25 @@ public class EnemyDeath : MonoBehaviour
         if (guard != null)
         {
             // Play respective enemy death animation.
+            guard.anim.SetTrigger("Dying");
             Destroy(guard);
         }
 
         else if (runner != null)
         {
-            // Play respective enemy death animation.
+            runner.Anim.SetTrigger("Dying");
             Destroy(runner);
         }
 
         else if (turret != null)
         {
-            // Play respective enemy death animation.
+            turret.anim.SetTrigger("Dying");
             Destroy(turret);
         }
 
 
         // After death animation, destroy the whole gameoject
-        Invoke("DestroyAll", 3f);
+        Invoke("DestroyAll", 1f);
 
     }
 

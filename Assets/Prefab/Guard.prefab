@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyDead: 0
-  anim: {fileID: 0}
+  anim: {fileID: 7720037231762255137}
 --- !u!114 &2351858127163154619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,7 +208,7 @@ Animator:
   m_GameObject: {fileID: 5442921658238903325}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 09b136b79c562d04b90f9e6fc5de241f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2488dc611d2d2704084f6289b052de34, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
