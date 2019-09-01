@@ -14,7 +14,7 @@ public class Guard : MonoBehaviour
     public float speed = 2f;
     public int currentWayPoint = 1;
     public int rotateCount;
-    public float killRadius = 1f;
+    public float killRadius = 0.5f;
     public bool facingRight = true;
     public bool facingLeft = false;
 

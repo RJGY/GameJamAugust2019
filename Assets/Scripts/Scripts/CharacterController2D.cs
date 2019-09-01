@@ -147,18 +147,7 @@ public class CharacterController2D : MonoBehaviour
                 CanHurt = true;
             }
         }
-        colliders = Physics2D.OverlapCircleAll(m_HitBox.position, m_HitBoxRadius, m_WhatIsEnemy);
-        for (int i = 0; i < colliders.Length; i++)
-        {
-            if (colliders[i].gameObject != gameObject)
-            {
-                if (!IsHurt)
-                {
-                    Death();
-
-                }
-            }
-        }
+        
         if (IsTopBlocked)
         {
             Anim.SetBool("TopSide", true);
