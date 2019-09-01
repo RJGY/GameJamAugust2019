@@ -104,8 +104,8 @@ public class CharacterController2D : MonoBehaviour
             if (colliders[i].gameObject != gameObject)
             {
                 IsGrounded = true;
-                if (!wasGrounded)
-                    OnLandEvent.Invoke();
+               
+                    
                 DoubleJump = true;
 
 
@@ -197,6 +197,10 @@ public class CharacterController2D : MonoBehaviour
                 {
                     Anim.SetBool("Topside", true);
                     
+                }
+                else 
+                {
+                    Anim.SetBool("Topside", false);
                 }
             }
         }
