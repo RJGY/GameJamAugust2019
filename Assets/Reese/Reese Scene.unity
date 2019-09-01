@@ -671,7 +671,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 59dce1e1ac6a4f448a7b374411741465, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -814,12 +814,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8800165919391208230, guid: 450cacd2358dc3544b9c5b1331d232f0,
         type: 3}
-      propertyPath: m_WhatIsEnemy.m_Bits
-      value: 2048
-      objectReference: {fileID: 0}
-    - target: {fileID: 1272856127, guid: 450cacd2358dc3544b9c5b1331d232f0, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
+      propertyPath: WhatIsMe.m_Bits
+      value: 512
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 450cacd2358dc3544b9c5b1331d232f0, type: 3}
@@ -1409,7 +1405,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 59dce1e1ac6a4f448a7b374411741465, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

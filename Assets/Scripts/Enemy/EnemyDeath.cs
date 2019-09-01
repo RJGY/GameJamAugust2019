@@ -1,72 +1,69 @@
 ﻿using UnityEngine;
 
-namespace Reese
+
+
+public class EnemyDeath : MonoBehaviour
 {
-
-
-    public class EnemyDeath : MonoBehaviour
+    public bool enemyDead = false;
+    public Animator anim;
+    private Guard guard;
+    private Runner runner;
+    private Turret turret;
+    private TriggerEvent triggerEvent;
+    // Start is called before the first frame update
+    void Start()
     {
-        public bool enemyDead = false;
-        public Animator anim;
-        private Guard guard;
-        private Runner runner;
-        private Turret turret;
-        private TriggerEvent triggerEvent;
-        // Start is called before the first frame update
-        void Start()
+        triggerEvent = GetComponent<TriggerEvent>();
+        guard = GetComponent<Guard>();
+        runner = GetComponent<Runner>();
+        turret = GetComponent<Turret>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (enemyDead)
         {
-            triggerEvent = GetComponent<TriggerEvent>();
-            guard = GetComponent<Guard>();
-            runner = GetComponent<Runner>();
-            turret = GetComponent<Turret>();
+            OnDeath();
+        }
+    }
+
+    void OnDeath()
+    {
+
+        if (triggerEvent != null)
+        {
+            Destroy(triggerEvent);
         }
 
-        // Update is called once per frame
-        void Update()
+
+        if (guard != null)
         {
-            if (enemyDead)
-            {
-                OnDeath();
-            }
+            // Play respective enemy death animation.
+            Destroy(guard);
         }
 
-        void OnDeath()
+        else if (runner != null)
         {
-
-            if (triggerEvent != null)
-            {
-                Destroy(triggerEvent);
-            }
-            
-
-            if (guard != null)
-            {
-                // Play respective enemy death animation.
-                Destroy(guard);
-            }
-
-            else if (runner != null)
-            {
-                // Play respective enemy death animation.
-                Destroy(runner);
-            }
-
-            else if (turret != null)
-            {
-                // Play respective enemy death animation.
-                Destroy(turret);
-            }
-
-            
-            // After death animation, destroy the whole gameoject
-            Invoke("DestroyAll", 3f);
-
+            // Play respective enemy death animation.
+            Destroy(runner);
         }
 
-        void DestroyAll()
+        else if (turret != null)
         {
-            gameObject.SetActive(false);
+            // Play respective enemy death animation.
+            Destroy(turret);
         }
+
+
+        // After death animation, destroy the whole gameoject
+        Invoke("DestroyAll", 3f);
+
+    }
+
+    void DestroyAll()
+    {
+        gameObject.SetActive(false);
     }
 }
 

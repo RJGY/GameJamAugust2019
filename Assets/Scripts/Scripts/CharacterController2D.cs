@@ -15,6 +15,7 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private bool m_StickToSlopes = true;                         // Whether or not a player can stick to slopes
     [SerializeField] private LayerMask m_WhatIsGround;                          // A mask determining what is ground to the character
     [SerializeField] private LayerMask m_WhatIsEnemy;
+    [SerializeField] private LayerMask WhatIsMe;
     //[SerializeField] private LayerMask m_WhatIsLadder;                          // A mask determining what is ladder to the character
     [SerializeField] private Transform m_GroundCheck;                           // A position marking where to check if the player is grounded.
     //[SerializeField] private Transform m_LadderCheck;                           // A position marking where the starting point of ladder ray is.
@@ -163,11 +164,26 @@ public class CharacterController2D : MonoBehaviour
     public void Attack()
     {
         Anim.SetTrigger("Attack");
-        if (CanHurt == true)
+        if (IsFacingRight)
         {
-
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, 2f, ~WhatIsMe);
+            if (hit.collider != null)
+            {
+                if (hit.collider.GetComponent<EnemyDeath>() != null)
+                {
+                    hit.collider.SendMessage("OnDeath");
+                }
+            }
         }
 
+        else
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, 2f, ~WhatIsMe);
+            if (hit.collider != null)
+            {
+
+            }
+        }
     }
     
 
