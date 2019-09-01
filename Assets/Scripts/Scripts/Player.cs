@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public AudioClip MusicClip;
+    public AudioSource MusicSource;
     //Member Variables
     public float jumpHeight = 5f; // how high he jumps
     public float climbSpeed = 10f; // how fast he climbs
@@ -53,6 +55,7 @@ public class Player : MonoBehaviour
             if (Input.GetButtonDown("Fire1"))
             {
                 Invoke("Attack", 0.5f);
+                SoundManager.Instance.PlaySound("Attack");
             }
             if (isJumping)
             {

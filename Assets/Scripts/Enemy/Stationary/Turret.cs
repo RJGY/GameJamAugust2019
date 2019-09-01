@@ -57,6 +57,7 @@ public class Turret : MonoBehaviour
         if (!GameManager.Instance.gameEnded)
         {
             Instantiate(bulletPrefab, gunPosition.position, transform.rotation);
+            SoundManager.Instance.PlaySound("Turret");
         }
 
     }

@@ -350,5 +350,9 @@ public class CharacterController2D : MonoBehaviour
         // Place Redborder sprite as a child into the Respawn button.        
         IsHurt = true;
 
+        SoundManager.Instance.PlaySound("PlayerDeath");
     }
+
+    // CTRL + M + O = Folds Code
+    // CTRL + M + P = UnFolds Code
 }

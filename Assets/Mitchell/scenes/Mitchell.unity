@@ -112326,6 +112326,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!1 &1009760101 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9129984084020899941, guid: 9222f8023bcd55a4ab6b300f0e6dc0db,
+    type: 3}
+  m_PrefabInstance: {fileID: 9129984084358366976}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1009760102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009760101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a02c60e143126ba4bac1666ed1c3b598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds: []
 --- !u!1 &1017992713
 GameObject:
   m_ObjectHideFlags: 0
@@ -112523,12 +112542,22 @@ MonoBehaviour:
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 256
+  m_WhatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 0
+  WhatIsMe:
+    serializedVersion: 2
+    m_Bits: 0
   m_GroundCheck: {fileID: 1687122378}
   m_FrontCheck: {fileID: 518151936}
   m_TopCheck: {fileID: 1746172777}
+  m_AttackCheck: {fileID: 0}
+  m_HitBox: {fileID: 0}
   m_GroundedRadius: 0.05
   m_FrontCheckRadius: 0.05
   m_TopCheckRadius: 0.05
+  m_AttackCheckRadius: 0.05
+  m_HitBoxRadius: 0.05
   m_GroundRayLength: 0.2
   OnLandEvent:
     m_PersistentCalls:
@@ -112536,6 +112565,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   DoubleJump: 0
+  IsFacingRight: 1
   JumpAngle: 0
 --- !u!114 &1017992723
 MonoBehaviour:
@@ -112549,6 +112579,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1fa00168c52b024fad24083a2a9b87f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MusicClip: {fileID: 0}
+  MusicSource: {fileID: 0}
   jumpHeight: 5
   climbSpeed: 10
   moveSpeed: 10
@@ -112672,3 +112704,72 @@ Transform:
   m_Father: {fileID: 1017992719}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &9129984084358366976
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 9129984084020899941, guid: 9222f8023bcd55a4ab6b300f0e6dc0db,
+        type: 3}
+      propertyPath: m_Name
+      value: SoundManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 9129984084020899942, guid: 9222f8023bcd55a4ab6b300f0e6dc0db,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9129984084020899942, guid: 9222f8023bcd55a4ab6b300f0e6dc0db,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9129984084020899942, guid: 9222f8023bcd55a4ab6b300f0e6dc0db,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9129984084020899942, guid: 9222f8023bcd55a4ab6b300f0e6dc0db,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9129984084020899942, guid: 9222f8023bcd55a4ab6b300f0e6dc0db,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9129984084020899942, guid: 9222f8023bcd55a4ab6b300f0e6dc0db,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9129984084020899942, guid: 9222f8023bcd55a4ab6b300f0e6dc0db,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9129984084020899942, guid: 9222f8023bcd55a4ab6b300f0e6dc0db,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9129984084020899942, guid: 9222f8023bcd55a4ab6b300f0e6dc0db,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9129984084020899942, guid: 9222f8023bcd55a4ab6b300f0e6dc0db,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9129984084020899942, guid: 9222f8023bcd55a4ab6b300f0e6dc0db,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9222f8023bcd55a4ab6b300f0e6dc0db, type: 3}

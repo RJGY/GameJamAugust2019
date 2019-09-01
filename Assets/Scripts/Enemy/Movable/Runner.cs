@@ -3,7 +3,7 @@
 public class Runner : MonoBehaviour
 {
     private Transform currentPlayer = null;
-
+    
     private bool stopRotating = false;
 
     // Everything for navmesh stuff - patrol

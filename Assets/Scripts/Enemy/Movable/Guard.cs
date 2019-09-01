@@ -190,6 +190,7 @@ public class Guard : MonoBehaviour
         if (!GameManager.Instance.gameEnded)
         {
             Instantiate(bulletPrefab, gunPosition.position, transform.rotation);
+            SoundManager.Instance.PlaySound("SoldierAttack");
         }
         else
         {
@@ -206,6 +207,7 @@ public class Guard : MonoBehaviour
             {
                 GameManager.Instance.GameOver();
                 SendMessage("Interact");
+                Debug.Log("HELP");
             }
         }
     }
