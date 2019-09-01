@@ -56,12 +56,12 @@ void Start()
             {
                 float checkDistance = transform.position.x - currentPoint.position.x;
 
-                if (checkDistance > 0 && !facingLeft)
+                if (checkDistance > 0 && !facingRight)
                 {
                     Debug.Log("Changed Rotation");
                     ChangeRotation();
                 }
-                else if (!facingRight && checkDistance < 0)
+                else if (!facingLeft && checkDistance < 0)
                 {
                     Debug.Log("Changed Rotation");
                     ChangeRotation();
@@ -181,7 +181,7 @@ void Start()
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, 1f, ~layer);
             if (hit.collider == null)
             {
-                if(!facingLeft)
+                if(!facingRight)
                 {
                     ChangeRotation();
                 }
@@ -198,7 +198,7 @@ void Start()
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, 1f, ~layer);
             if (hit.collider == null)
             {
-                if (!facingRight)
+                if (!facingLeft)
                 {
                     ChangeRotation();
                 }

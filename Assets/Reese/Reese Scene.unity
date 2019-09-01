@@ -944,20 +944,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8800165919391208248, guid: 450cacd2358dc3544b9c5b1331d232f0,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8800165919391208248, guid: 450cacd2358dc3544b9c5b1331d232f0,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: -0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1272856127, guid: 450cacd2358dc3544b9c5b1331d232f0, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 450cacd2358dc3544b9c5b1331d232f0, type: 3}
 --- !u!114 &1310661195 stripped
@@ -1717,12 +1703,6 @@ Transform:
   m_Father: {fileID: 1646682227}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &2114936573 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 2114936573, guid: be1e14db96da6f24e8ce390440dd0f2b,
-    type: 3}
-  m_PrefabInstance: {fileID: 7068456407650430690}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5442921658973565194
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1896,7 +1876,7 @@ PrefabInstance:
     - target: {fileID: 7068456409376494297, guid: be1e14db96da6f24e8ce390440dd0f2b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 7068456409376494297, guid: be1e14db96da6f24e8ce390440dd0f2b,
         type: 3}
@@ -1948,28 +1928,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7068456409376494301, guid: be1e14db96da6f24e8ce390440dd0f2b,
-        type: 3}
-      propertyPath: anim
-      value: 
-      objectReference: {fileID: 2114936573}
-    - target: {fileID: 7068456409376494301, guid: be1e14db96da6f24e8ce390440dd0f2b,
-        type: 3}
-      propertyPath: gunPosition
-      value: 
-      objectReference: {fileID: 1735294011}
-    - target: {fileID: 7068456409376494242, guid: be1e14db96da6f24e8ce390440dd0f2b,
-        type: 3}
-      propertyPath: anim
-      value: 
-      objectReference: {fileID: 2114936573}
-    - target: {fileID: 2114936572, guid: be1e14db96da6f24e8ce390440dd0f2b, type: 3}
-      propertyPath: m_Animation
-      value: 
-      objectReference: {fileID: 7400000, guid: 3aab85258e570cc47aa0cea8ed53729f, type: 2}
-    - target: {fileID: 2114936573, guid: be1e14db96da6f24e8ce390440dd0f2b, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 186be3e1c8d30414f8dbcb905cfbb9e4, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be1e14db96da6f24e8ce390440dd0f2b, type: 3}
