@@ -16,7 +16,7 @@ public class Guard : MonoBehaviour
     public int rotateCount;
     public float killRadius = 1f;
 
-    //Animation stuff.
+    // Animation stuff.
     public Animator anim;
 
     // For gun.
@@ -34,6 +34,7 @@ public class Guard : MonoBehaviour
     {
         gunPosition = GetComponent<Transform>();
         points = waypointParent.GetComponentsInChildren<Transform>();
+        anim = GetComponent<Animator>();
     }
 
 
@@ -41,6 +42,10 @@ public class Guard : MonoBehaviour
     {
         KillPlayer();
         Transform currentPoint = points[currentWayPoint]; // Gets current point.
+        if (GameManager.Instance.gameEnded)
+        {
+            anim.SetBool("IsIdle", true);
+        }
 
         if (currentPlayer == null)
         {
@@ -61,6 +66,7 @@ public class Guard : MonoBehaviour
                     transform.SetPositionAndRotation(transform.position, Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z));
                     if (!stopShooting)
                     {
+                        anim.SetTrigger("Attack");
                         stopShooting = true;
                         Shoot();
                         Invoke("SwapStates", 0.5f);
@@ -71,6 +77,7 @@ public class Guard : MonoBehaviour
                     transform.SetPositionAndRotation(transform.position, Quaternion.Euler(transform.rotation.x, 180f, transform.rotation.z));
                     if (!stopShooting)
                     {
+                        anim.SetTrigger("Attack");
                         stopShooting = true;
                         Shoot();
                         Invoke("SwapStates", 0.5f);
@@ -83,6 +90,7 @@ public class Guard : MonoBehaviour
                 // Flip the guard, make it look like he is looking for the alien.
                 if (!stopRotating && rotateCount < 4)
                 {
+                    anim.SetBool("IsWalking", false);
                     transform.Rotate(transform.rotation.x, transform.rotation.y + 180, transform.rotation.z);
                     stopRotating = true;
                     Invoke("SwapStates", 1f);
@@ -93,7 +101,7 @@ public class Guard : MonoBehaviour
                 {
                     // Guard goes back to patrolling
                     Patrol();
-
+                    anim.SetBool("IsWalking", true);
                 }
             }
         }
@@ -147,7 +155,7 @@ public class Guard : MonoBehaviour
         }
         else
         {
-            Debug.Log("This should happen");
+            Debug.Log("This should happen when u are ded");
         }
     }
 

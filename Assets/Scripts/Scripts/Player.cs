@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     private CharacterController2D controller;
     private Animator animator;
     //private Interact interactObject;
+
     /*
     Create an 'interactObject' of Type 'Interact' 
      - Set this variable using the OnTriggerEnter & OnTrigger Exit methods
@@ -67,4 +68,5 @@ public class Player : MonoBehaviour
             controller.Move(horizontal * moveSpeed);
         }
     }
+
 }

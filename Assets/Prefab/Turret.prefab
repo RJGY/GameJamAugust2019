@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 7068456409376494302}
   - component: {fileID: 7068456409376494242}
   - component: {fileID: 6477170768746386824}
+  - component: {fileID: 2114936572}
+  - component: {fileID: 2114936573}
   m_Layer: 10
   m_Name: Turret
   m_TagString: Enemy
@@ -50,6 +52,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 2449404466635445867, guid: db19cbd94d7d0f147984f316c586bfcf,
     type: 3}
   stopShooting: 0
+  anim: {fileID: 0}
 --- !u!61 &7068456409376494302
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -138,3 +141,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!111 &2114936572
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7068456409376494296}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!95 &2114936573
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7068456409376494296}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

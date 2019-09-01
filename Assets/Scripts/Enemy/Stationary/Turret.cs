@@ -11,10 +11,12 @@ public class Turret : MonoBehaviour
     private float horizontalDistance = 10f;
     private float verticalDistance = 1f;
 
+    public Animator anim;
     // Start is called before the first frame update
     void Start()
     {
         gunPosition = GetComponent<Transform>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame

@@ -23,14 +23,14 @@ public class Bullet : MonoBehaviour
 
         if ((currentPlayer.position.x - transform.position.x) < 0) // If player is on the left.
         {
-            transform.SetPositionAndRotation(transform.position, Quaternion.Euler(transform.rotation.x, transform.rotation.y, 90f));
+            transform.SetPositionAndRotation(transform.position, Quaternion.Euler(transform.rotation.x, transform.rotation.y, 0f));
             movingToRight = true;
             
         }
 
         else
         {
-            transform.SetPositionAndRotation(transform.position, Quaternion.Euler(transform.rotation.x, transform.rotation.y, -90f));
+            transform.SetPositionAndRotation(transform.position, Quaternion.Euler(transform.rotation.x, transform.rotation.y, 180f));
             movingToLeft = true;
         }
     }
@@ -56,6 +56,11 @@ public class Bullet : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Destroy(gameObject);
+    }
+
+    public void Punched()
     {
         Destroy(gameObject);
     }
