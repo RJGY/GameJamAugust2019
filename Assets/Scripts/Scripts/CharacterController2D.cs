@@ -98,6 +98,7 @@ public class CharacterController2D : MonoBehaviour
         IsTopBlocked = false;
         Anim.SetBool("IsRunning", false);
         Anim.SetBool("IsFrontBlocked", false);
+        Anim.SetBool("TopSide", false);
         // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
         // This can be done using layers instead but Sample Assets will not overwrite your project settings.
         Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, m_GroundedRadius, m_WhatIsGround);
@@ -133,6 +134,7 @@ public class CharacterController2D : MonoBehaviour
             if (colliders[i].gameObject != gameObject)
             {
                 IsTopBlocked = true;
+                Anim.SetBool("TopSide", true);
 
 
             }
