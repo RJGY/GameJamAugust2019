@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
             bool isJumping = Input.GetButtonDown("Jump");
             if (Input.GetButtonDown("Fire1"))
             {
-                controller.Attack();
+                Invoke("Attack", 0.5f);
             }
             if (isJumping)
             {
@@ -67,6 +67,11 @@ public class Player : MonoBehaviour
 
             controller.Move(horizontal * moveSpeed);
         }
+    }
+
+    void Attack()
+    {
+        controller.Attack();
     }
 
 }

@@ -48,11 +48,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a4d353dec28fc448ba9ee448a0c4ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunPosition: {fileID: 0}
+  gunPosition: {fileID: 7068456409376494297}
   bulletPrefab: {fileID: 2449404466635445867, guid: db19cbd94d7d0f147984f316c586bfcf,
     type: 3}
   stopShooting: 0
-  anim: {fileID: 0}
+  anim: {fileID: 2114936573}
 --- !u!61 &7068456409376494302
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyDead: 0
-  anim: {fileID: 0}
+  anim: {fileID: 2114936573}
 --- !u!212 &6477170768746386824
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -150,7 +150,7 @@ Animation:
   m_GameObject: {fileID: 7068456409376494296}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 0}
+  m_Animation: {fileID: 7400000, guid: 3aab85258e570cc47aa0cea8ed53729f, type: 2}
   m_Animations: []
   m_WrapMode: 0
   m_PlayAutomatically: 1
@@ -166,7 +166,7 @@ Animator:
   m_GameObject: {fileID: 7068456409376494296}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 186be3e1c8d30414f8dbcb905cfbb9e4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
