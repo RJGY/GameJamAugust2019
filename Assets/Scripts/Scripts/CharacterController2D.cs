@@ -269,7 +269,7 @@ public class CharacterController2D : MonoBehaviour
 
 
         }
-        else if (DoubleJump || !IsGrounded)
+        else if (DoubleJump && !IsGrounded)
         {
             DoubleJump = false;
             Rigidbody.AddForce(new Vector2(0f, height), ForceMode2D.Impulse);
