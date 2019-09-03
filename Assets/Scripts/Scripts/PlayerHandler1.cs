@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class PlayerHandler1 : MonoBehaviour
 {
     public float maxHealth, maxMana, maxStamina;
-    public float currentHealth, currentMana, currentStamina;
+    public float curHealth, curMana, curStamina;
 
     private UIManager _uiManager;
 
@@ -21,9 +21,9 @@ public class PlayerHandler1 : MonoBehaviour
         maxHealth = 100;
         maxMana = 100;
         maxStamina = 100;
-        currentHealth = 100;
-        currentMana = 100;
-        currentStamina = 100;
+        curHealth = 100;
+        curMana = 100;
+        curStamina = 100;
     }
 
     // Update is called once per frame
