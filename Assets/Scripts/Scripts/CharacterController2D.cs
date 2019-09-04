@@ -180,7 +180,7 @@ public class CharacterController2D : MonoBehaviour
         if (!Wrap1Free || !Wrap0Free)
         {
             Rigidbody.gravityScale = 0;
-            Flip();
+            //Flip();
 
         }
 
