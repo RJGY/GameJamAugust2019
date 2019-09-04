@@ -21,9 +21,9 @@ public class PlayerDataToSave
         maxMana = player.maxMana;
         maxStamina = player.maxStamina;
 
-        currentHealth = player.currentHealth;
-        currentMana = player.currentMana;
-        currentStamina = player.currentStamina;
+        currentHealth = player.curHealth;
+        currentMana = player.curMana;
+        currentStamina = player.curStamina;
 
         currentPositionX = player.transform.position.x;
         currentPositionY = player.transform.position.y;
