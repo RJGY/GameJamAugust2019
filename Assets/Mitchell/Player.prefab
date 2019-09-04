@@ -1,5 +1,65 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &618578210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 618578211}
+  m_Layer: 9
+  m_Name: Wrap0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &618578211
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618578210}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.04, y: 1.23, z: 0.043945312}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8800165919391208251}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1692066818
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1692066819}
+  m_Layer: 9
+  m_Name: Wrap1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1692066819
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692066818}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.99, y: 1.23, z: 0.043945312}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8800165919391208251}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1789790207
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,6 +340,8 @@ Transform:
   - {fileID: 2218571513952361364}
   - {fileID: 4362026632346315655}
   - {fileID: 1789790210}
+  - {fileID: 618578211}
+  - {fileID: 1692066819}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -303,7 +365,7 @@ MonoBehaviour:
     m_Bits: 256
   m_WhatIsEnemy:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 3072
   WhatIsMe:
     serializedVersion: 2
     m_Bits: 512
@@ -312,11 +374,15 @@ MonoBehaviour:
   m_TopCheck: {fileID: 8800165918512971357}
   m_AttackCheck: {fileID: 2218571513952361364}
   m_HitBox: {fileID: 4362026632346315655}
+  m_Wrap0: {fileID: 618578211}
+  m_Wrap1: {fileID: 1692066819}
   m_GroundedRadius: 0.05
   m_FrontCheckRadius: 0.05
   m_TopCheckRadius: 0.05
   m_AttackCheckRadius: 1
   m_HitBoxRadius: 0.7
+  m_Wrap0Radius: 0.05
+  m_Wrap1Radius: 0.05
   m_GroundRayLength: 0.2
   OnLandEvent:
     m_PersistentCalls:
@@ -391,6 +457,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1fa00168c52b024fad24083a2a9b87f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MusicClip: {fileID: 0}
+  MusicSource: {fileID: 0}
   jumpHeight: 10
   climbSpeed: 10
   moveSpeed: 10

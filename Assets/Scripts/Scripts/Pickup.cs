@@ -9,8 +9,8 @@ public class Pickup : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
        
-        int healthCount = gameObject.GetComponent<PlayerHandler1>().curHealth / gameObject.GetComponent<PlayerHandler1>().maxHealth;
-        if (other.tag == "Health" && healthCount < 1)
+        //int healthCount = gameObject.GetComponent<PlayerHandler1>().curHealth / gameObject.GetComponent<PlayerHandler1>().maxHealth;
+        //if (other.tag == "Health" && healthCount < 1)
         {
             gameObject.GetComponent<PlayerHandler1>().curHealth += 1;
             Destroy(other.gameObject);
