@@ -18,10 +18,10 @@ public class PlayerHandler : MonoBehaviour
 
     void Start()
     {
-        maxHealth = 100;
+        maxHealth = 3;
         maxMana = 100;
         maxStamina = 100;
-        curHealth = 100;
+        curHealth = 3;
         curMana = 100;
         curStamina = 100;
         controller = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController2D>();

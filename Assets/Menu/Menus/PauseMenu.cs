@@ -13,7 +13,7 @@ public class PauseMenu : MonoBehaviour
     void Start()//start of the game set the defaults
     {
         _pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
-        _pauseButton = GameObject.FindGameObjectWithTag("PauseButton");
+        _pauseButton = GameObject.FindGameObjectWithTag("PauseButoon");
         _restartButton = GameObject.FindGameObjectWithTag("Respawn");
         _pauseTitle = GameObject.FindGameObjectWithTag("PauseTitle");
         _pauseButton.SetActive(true);
@@ -61,7 +61,7 @@ public class PauseMenu : MonoBehaviour
             Time.timeScale = 0;//stop time
             _pauseButton.SetActive(false);
             _restartButton.SetActive(true);
-            _pauseTitle.text = "Game Over";
+            //_pauseTitle.text = "Game Over";
         
     }
 }
