@@ -33,7 +33,6 @@ public class CharacterController2D : MonoBehaviour
 
     // Public Getters / Setters (Parameters)
     public bool IsGrounded { get; private set; }
-    float correctRotation;
     public bool IsClimbing { get; private set; }
     public bool IsFrontBlocked { get; private set; }
     public bool IsTopBlocked { get; private set; }
