@@ -27,9 +27,13 @@ public class PauseMenu : MonoBehaviour
     }
     void Update()
     {
-        if(Input.GetButtonDown("Cancel") && !controller.IsDead)//press escape 
+        if (Input.GetButtonDown("Cancel") && !controller.IsDead)//press escape 
         {
             TogglePause();//runs toggle pause function
+        }
+        if (controller.IsDead)
+        {
+            DeathScreen();
         }
     }
     public void TogglePause()
@@ -51,13 +55,13 @@ public class PauseMenu : MonoBehaviour
     }
     public void DeathScreen()
     {
-        if (controller.IsDead)
-        {
+        
             _pauseMenu.SetActive(true);//show pause menu
             isPaused = true;//we are now paused
             Time.timeScale = 0;//stop time
             _pauseButton.SetActive(false);
             _restartButton.SetActive(true);
-        }
+            _pauseTitle.text = "Game Over";
+        
     }
 }
