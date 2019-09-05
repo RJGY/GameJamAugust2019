@@ -8,7 +8,7 @@ public class PlayerHandler : MonoBehaviour
 {
     public float maxHealth, maxMana, maxStamina;
     public float curHealth, curMana, curStamina;
-
+    private CharacterController2D controller;
     private UIManager _uiManager;
 
     void Awake()
@@ -24,11 +24,15 @@ public class PlayerHandler : MonoBehaviour
         curHealth = 100;
         curMana = 100;
         curStamina = 100;
+        controller = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (curHealth <= 0)
+        {
+            controller.Death();
+        }
     }
 }
