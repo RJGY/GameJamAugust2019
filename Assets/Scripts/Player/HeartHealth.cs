@@ -10,7 +10,7 @@ public class HeartHealth : MonoBehaviour
 
     [Header("Player Statistics")]
     [SerializeField]
-    private float currentHealth, maxHealth;
+    private float curHealth, maxHealth;
 
     [Header("Heart Slots")]
     public Image[] heartSlots;
@@ -28,9 +28,9 @@ public class HeartHealth : MonoBehaviour
 
     private void Update()
     {
-        if (currentHealth != _playerHandler.curHealth)
+        if (curHealth != _playerHandler.curHealth)
         {
-            currentHealth = _playerHandler.curHealth;
+            curHealth = _playerHandler.curHealth;
             UpdateHeart();
         }
     }
@@ -42,7 +42,7 @@ public class HeartHealth : MonoBehaviour
         for (int i = 0; i < heartSlots.Length; i++)
         {
             // If our health is greater or equal to the slot amount.
-            if (currentHealth >= (healthPerSection) + healthPerSection * i)
+            if (curHealth >= (healthPerSection) + healthPerSection * i)
             {
                 heartSlots[i].sprite = heartSprite[0]; // Shows player with full hearts
             }
@@ -51,7 +51,7 @@ public class HeartHealth : MonoBehaviour
             {
                 // You are supposed to be dead here
 
-                heartSlots[i].sprite = heartSprite[2]; // Shows player with no hearts for that section.
+                heartSlots[i].sprite = heartSprite[1]; // Shows player with no hearts for that section.
             }
         }
     }
