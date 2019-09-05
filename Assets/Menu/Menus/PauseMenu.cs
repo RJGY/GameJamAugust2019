@@ -6,16 +6,24 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool isPaused;//pause state that everything can see
     private GameObject _pauseMenu;
+    private GameObject _pauseButton;
+    private GameObject _restartButton;
+    private GameObject _pauseTitle;
     private CharacterController2D controller;
     void Start()//start of the game set the defaults
     {
         _pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
+        _pauseButton = GameObject.FindGameObjectWithTag("PauseButton");
+        _restartButton = GameObject.FindGameObjectWithTag("Respawn");
+        _pauseTitle = GameObject.FindGameObjectWithTag("PauseTitle");
+        _pauseButton.SetActive(true);
+        _restartButton.SetActive(false);
         _pauseMenu.SetActive(false);//hide pause menu
         isPaused = false;//we are not paused
         Time.timeScale = 1;//start time
-        Cursor.lockState = CursorLockMode.Locked;//lock cursor to center of screen
-        Cursor.visible = false;// hide cursor
+        
         controller = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController2D>();
+        
     }
     void Update()
     {
@@ -48,7 +56,8 @@ public class PauseMenu : MonoBehaviour
             _pauseMenu.SetActive(true);//show pause menu
             isPaused = true;//we are now paused
             Time.timeScale = 0;//stop time
-            
+            _pauseButton.SetActive(false);
+            _restartButton.SetActive(true);
         }
     }
 }

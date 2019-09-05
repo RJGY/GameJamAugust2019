@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - PauseMenu
   - DangerZone
+  - PauseButoon
+  - PauseTitle
   layers:
   - Default
   - TransparentFX
