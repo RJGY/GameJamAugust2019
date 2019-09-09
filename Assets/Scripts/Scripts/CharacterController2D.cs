@@ -176,10 +176,9 @@ public class CharacterController2D : MonoBehaviour
                 }
             }
         }
-        if (!Wrap1Free || !Wrap0Free)
+        if (!Wrap1Free)
         {
-            Rigidbody.gravityScale = 0;
-            //Flip();
+            transform.position(Wrap1Free);
 
         }
 
