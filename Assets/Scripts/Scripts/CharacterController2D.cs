@@ -178,9 +178,9 @@ public class CharacterController2D : MonoBehaviour
         }
         if (!Wrap1Free)
         {
-           
-                WhatIsMe.transform.position = Wrap1Free[].position;
 
+            Rigidbody.transform.position = m_Wrap1.position;
+            Wrap1Free = true;
         }
 
     }
