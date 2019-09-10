@@ -42,6 +42,7 @@ public class CharacterController2D : MonoBehaviour
     public bool IsHurt { get; private set; }
     public bool DoubleJump;
     public bool IsFacingRight = true;
+    public bool IsFacingUp = true;
     public float JumpAngle;
 
     public bool IsDead { get; private set; } = false;
@@ -238,6 +239,17 @@ public class CharacterController2D : MonoBehaviour
         transform.localScale = theScale;
     }
 
+    public void FlipUp()
+    {
+        // Switch the way the player is labelled as facing.
+        IsFacingUp = !IsFacingUp;
+
+        // Multiply the player's x local scale by -1.
+        Vector3 theScale = transform.localScale;
+        theScale.y *= -1;
+        transform.localScale = theScale;
+    }
+
     // >> Custom methods go here <<
 
     public void Climb(float offsetY)
@@ -269,6 +281,17 @@ public class CharacterController2D : MonoBehaviour
         {
             Rigidbody.gravityScale = 0;
             Rigidbody.velocity = new Vector2(Rigidbody.velocity.x, offsetY);
+            if (offsetY > 0 && !IsFacingUp)
+            {
+                // ... flip the player.
+                FlipUp();
+            }
+            // Otherwise if the input is moving the player left and the player is facing right...
+            else if (offsetY < 0 && IsFacingUp)
+            {
+                // ... flip the player.
+                FlipUp();
+            }
         }
         else
         {
