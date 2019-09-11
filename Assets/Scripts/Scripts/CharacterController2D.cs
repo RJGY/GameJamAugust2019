@@ -19,9 +19,9 @@ public class CharacterController2D : MonoBehaviour
     //[SerializeField] private LayerMask m_WhatIsLadder;                          // A mask determining what is ladder to the character
     [SerializeField] private Transform m_GroundCheck;                           // A position marking where to check if the player is grounded.
     //[SerializeField] private Transform m_LadderCheck;                           // A position marking where the starting point of ladder ray is.
-    [SerializeField] private Transform m_FrontCheck, m_TopCheck, m_AttackCheck, m_HitBox, m_Wrap0, m_Wrap1;                            // A position makring where to check if the player is not hitting anything
+    [SerializeField] private Transform m_FrontCheck, m_TopCheck, m_AttackCheck, m_HitBox, m_Wrap0, m_Wrap1, m_Wrap2, m_Wrap3;                            // A position makring where to check if the player is not hitting anything
     [SerializeField] private float m_GroundedRadius = .05f;                      // Radius of the overlap circle to determine if grounded
-    [SerializeField] private float m_FrontCheckRadius = .05f, m_TopCheckRadius = .05f, m_AttackCheckRadius = 0.05f, m_HitBoxRadius = .05f, m_Wrap0Radius = .05f, m_Wrap1Radius = .05f;                    // Radius of the overlap circle to determine if front is blocked
+    [SerializeField] private float m_FrontCheckRadius = .05f, m_TopCheckRadius = .05f, m_AttackCheckRadius = 0.05f, m_HitBoxRadius = .05f, m_Wrap0Radius = .05f, m_Wrap1Radius = .05f, m_Wrap2Radius = .05f, m_Wrap3Radius = .05f;                    // Radius of the overlap circle to determine if front is blocked
     [SerializeField] private float m_GroundRayLength = .2f;                     // Length of the ray beneith controller
                                                                                 //[SerializeField] private float m_LadderRayLength = .5f;                     // Length of the ray above controller
 
@@ -38,6 +38,8 @@ public class CharacterController2D : MonoBehaviour
     public bool IsTopBlocked { get; private set; }
     public bool Wrap0Free { get; private set; }
     public bool Wrap1Free { get; private set; }
+    public bool Wrap2Free { get; private set; }
+    public bool Wrap3Free { get; private set; }
     public bool CanHurt { get; private set; }
     public bool IsHurt { get; private set; }
     public bool DoubleJump;
@@ -78,6 +80,8 @@ public class CharacterController2D : MonoBehaviour
         Gizmos.DrawWireSphere(m_TopCheck.position, m_TopCheckRadius);
         Gizmos.DrawWireSphere(m_Wrap0.position, m_Wrap0Radius);
         Gizmos.DrawWireSphere(m_Wrap1.position, m_Wrap1Radius);
+        Gizmos.DrawWireSphere(m_Wrap2.position, m_Wrap2Radius);
+        Gizmos.DrawWireSphere(m_Wrap3.position, m_Wrap3Radius);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(m_AttackCheck.position, m_AttackCheckRadius);
         Gizmos.color = Color.blue;
@@ -101,11 +105,14 @@ public class CharacterController2D : MonoBehaviour
         Anim.SetBool("IsGrounded", false);
         IsFrontBlocked = false;
         IsTopBlocked = false;
+        Wrap0Free = true;
+        Wrap1Free = true;
+        Wrap2Free = true;
+        Wrap3Free = true;
         Anim.SetBool("IsRunning", false);
         Anim.SetBool("IsFrontBlocked", false);
         Anim.SetBool("TopSide", false);
-        Wrap1Free = true;
-        Wrap0Free = true;
+        
         // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
         // This can be done using layers instead but Sample Assets will not overwrite your project settings.
         Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, m_GroundedRadius, m_WhatIsGround);
@@ -155,17 +162,17 @@ public class CharacterController2D : MonoBehaviour
             }
         }
         
-        if (IsTopBlocked)
-        {
-            Anim.SetBool("TopSide", true);
+        
+           
             colliders = Physics2D.OverlapCircleAll(m_Wrap0.position, m_Wrap0Radius, m_WhatIsGround);
             for (int i = 0; i < colliders.Length; i++)
             {
                 if (colliders[i].gameObject != gameObject)
                 {
                     Wrap0Free = false;
+                IsTopBlocked = true;
 
-                }
+            }
             }
             colliders = Physics2D.OverlapCircleAll(m_Wrap1.position, m_Wrap1Radius, m_WhatIsGround);
             for (int i = 0; i < colliders.Length; i++)
@@ -173,16 +180,32 @@ public class CharacterController2D : MonoBehaviour
                 if (colliders[i].gameObject != gameObject)
                 {
                     Wrap1Free = false;
+                IsTopBlocked = true;
 
-                }
+            }
+            }
+        colliders = Physics2D.OverlapCircleAll(m_Wrap2.position, m_Wrap2Radius, m_WhatIsGround);
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (colliders[i].gameObject != gameObject)
+            {
+                Wrap2Free = false;
+                IsTopBlocked = true;
+
             }
         }
-        if (!Wrap1Free)
+        colliders = Physics2D.OverlapCircleAll(m_Wrap3.position, m_Wrap3Radius, m_WhatIsGround);
+        for (int i = 0; i < colliders.Length; i++)
         {
+            if (colliders[i].gameObject != gameObject)
+            {
+                Wrap3Free = false;
+                IsTopBlocked = true;
 
-            Rigidbody.transform.position = m_Wrap1.position;
-            Wrap1Free = true;
+            }
         }
+
+
 
     }
 
