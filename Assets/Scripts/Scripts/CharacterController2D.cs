@@ -105,6 +105,7 @@ public class CharacterController2D : MonoBehaviour
         Anim.SetBool("IsGrounded", false);
         IsFrontBlocked = false;
         IsTopBlocked = false;
+        
         Wrap0Free = true;
         Wrap1Free = true;
         Wrap2Free = true;
@@ -170,7 +171,7 @@ public class CharacterController2D : MonoBehaviour
                 if (colliders[i].gameObject != gameObject)
                 {
                     Wrap0Free = false;
-                IsTopBlocked = true;
+                
 
             }
             }
@@ -180,7 +181,7 @@ public class CharacterController2D : MonoBehaviour
                 if (colliders[i].gameObject != gameObject)
                 {
                     Wrap1Free = false;
-                IsTopBlocked = true;
+                
 
             }
             }
@@ -190,7 +191,7 @@ public class CharacterController2D : MonoBehaviour
             if (colliders[i].gameObject != gameObject)
             {
                 Wrap2Free = false;
-                IsTopBlocked = true;
+                
 
             }
         }
@@ -200,10 +201,31 @@ public class CharacterController2D : MonoBehaviour
             if (colliders[i].gameObject != gameObject)
             {
                 Wrap3Free = false;
-                IsTopBlocked = true;
+                
 
             }
         }
+        //allows you to move from climbing on roof to climbing on wall
+        if (!Wrap0Free && IsClimbing)
+        {
+            IsFrontBlocked = true;
+        }
+        if (!Wrap1Free && IsClimbing)
+        {
+            IsFrontBlocked = true;
+        }
+
+        //allows you to move from climbing on wall to roof
+        if (!Wrap2Free && IsClimbing)
+        {
+            IsTopBlocked = true;
+        }
+        if (!Wrap3Free && IsClimbing)
+        {
+            IsTopBlocked = true;
+        }
+        
+
 
 
 
@@ -281,7 +303,7 @@ public class CharacterController2D : MonoBehaviour
             Anim.SetFloat("ClimbSpeed", offsetY);
 
         //RaycastHit2D ladderHit = Physics2D.Raycast(m_LadderCheck.position, Vector2.up, m_LadderRayLength, m_WhatIsLadder);
-        if (IsFrontBlocked || IsTopBlocked)
+        if (IsFrontBlocked || IsTopBlocked )
         {
             if (offsetY != 0)
             {
