@@ -442,7 +442,6 @@ public class CharacterController2D : MonoBehaviour
     {
         Anim.SetTrigger("Dying");
         IsDead = true;
-        UIManager.Instance.ActivateRespawnButton();
         GameManager.Instance.GameOver();
         // UIManager - Activate red border
         // Place Redborder sprite as a child into the Respawn button.        

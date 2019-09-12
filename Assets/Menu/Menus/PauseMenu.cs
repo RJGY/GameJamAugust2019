@@ -9,25 +9,26 @@ public class PauseMenu : MonoBehaviour
     private GameObject _pauseButton;
     private GameObject _restartButton;
     private GameObject _pauseTitle;
+
+    // Reference
     private CharacterController2D controller;
-    void Start()//start of the game set the defaults
+    void Awake()//start of the game set the defaults
     {
+        controller = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController2D>();
+
         _pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
         _pauseButton = GameObject.FindGameObjectWithTag("PauseButoon");
         _restartButton = GameObject.FindGameObjectWithTag("Respawn");
         _pauseTitle = GameObject.FindGameObjectWithTag("PauseTitle");
-        _pauseButton.SetActive(true);
+
         _restartButton.SetActive(false);
-        _pauseMenu.SetActive(false);//hide pause menu
-        isPaused = false;//we are not paused
-        Time.timeScale = 1;//start time
-        
-        controller = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController2D>();
-        
+        _pauseMenu.SetActive(true); // show pause menu
+        isPaused = true;//we are  paused
+        Time.timeScale = 0;//start time
     }
     void Update()
     {
-        if (Input.GetButtonDown("Cancel") && !controller.IsDead)//press escape 
+        if (Input.GetButtonDown("Cancel") && !controller.IsDead) //press escape 
         {
             TogglePause();//runs toggle pause function
         }
