@@ -12,23 +12,23 @@ public class SoundManager : MonoBehaviour
     }
     #endregion
 
-    public List<AudioSource> sounds = new List<AudioSource>();
+    public List<AudioSource> soundEffects = new List<AudioSource>();
 
     void Start()
     {
-        sounds = new List<AudioSource>(GetComponentsInChildren<AudioSource>());
+        soundEffects = new List<AudioSource>(GetComponentsInChildren<AudioSource>());
     }
 
     public void PlaySound(string soundName)
     {
         // Search Sound List for 'soundName'
-        foreach (var sound in sounds)
+        foreach (var soundEffect in soundEffects)
         {
             // If found Sound
-            if (sound.name == soundName)
+            if (soundEffect.name == soundName)
             {
                 //  Play that sound!
-                sound.Play();
+                soundEffect.Play();
             }
         }
     }
