@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 953177183753672965}
   - component: {fileID: 8692594303100357506}
+  - component: {fileID: 5656636987044464416}
+  - component: {fileID: 7632886864464974628}
   m_Layer: 0
   m_Name: metalscrap
   m_TagString: Untagged
@@ -79,3 +81,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5656636987044464416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5656636987044464415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30ecec3bc5c750d4681daeeb992ebc32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &7632886864464974628
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5656636987044464415}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
