@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8692594303100357506}
   - component: {fileID: 5656636987044464416}
   - component: {fileID: 7632886864464974628}
+  - component: {fileID: 4086639458371395024}
   m_Layer: 0
   m_Name: metalscrap
   m_TagString: Untagged
@@ -109,3 +110,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &4086639458371395024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5656636987044464415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30ecec3bc5c750d4681daeeb992ebc32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
