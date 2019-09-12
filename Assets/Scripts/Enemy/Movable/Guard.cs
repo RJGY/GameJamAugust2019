@@ -29,7 +29,7 @@ public class Guard : MonoBehaviour
     // Everything for facing player and shooting
     private float horizontalDistance = 10f;
     private float verticalDistance = 1f;
-
+    private TriggerEvent triggerEvent;
 
 
     void Start()
@@ -37,6 +37,7 @@ public class Guard : MonoBehaviour
         gunPosition = GetComponent<Transform>();
         points = waypointParent.GetComponentsInChildren<Transform>();
         anim = GetComponent<Animator>();
+        triggerEvent = GetComponent<TriggerEvent>();
     }
 
 
@@ -190,7 +191,7 @@ public class Guard : MonoBehaviour
         if (!GameManager.Instance.gameEnded)
         {
             Instantiate(bulletPrefab, gunPosition.position, transform.rotation);
-            SoundManager.Instance.PlaySound("SoldierAttack");
+            SoundManager.Instance.PlaySound("Pistol shot 3");
         }
         else
         {
@@ -206,7 +207,7 @@ public class Guard : MonoBehaviour
             if (distance < killRadius && !GameManager.Instance.gameEnded)
             {
                 GameManager.Instance.GameOver();
-                SendMessage("Interact");
+                triggerEvent.Interact();
                 Debug.Log("HELP");
             }
         }

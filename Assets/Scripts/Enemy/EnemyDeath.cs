@@ -10,6 +10,7 @@ public class EnemyDeath : MonoBehaviour
     private Runner runner;
     private Turret turret;
     private TriggerEvent triggerEvent;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,22 +42,25 @@ public class EnemyDeath : MonoBehaviour
         {
             // Play respective enemy death animation.
             guard.anim.SetTrigger("Dying");
-            SoundManager.Instance.PlaySound("SoldierDeath");
-            Destroy(guard);
+            Debug.Log("Just hit a guard");
+            SoundManager.Instance.PlaySound("Man Death");
+            guard.gameObject.SetActive(false);
         }
 
         else if (runner != null)
         {
             runner.Anim.SetTrigger("Dying");
-            SoundManager.Instance.PlaySound("RunnerDeath");
-            Destroy(runner);
+            Debug.Log("Just hit a runner");
+            SoundManager.Instance.PlaySound("Death of dog");
+            runner.gameObject.SetActive(false);
         }
 
         else if (turret != null)
         {
-            SoundManager.Instance.PlaySound("TurretDeath");
+            SoundManager.Instance.PlaySound("Turret destroyed");
             turret.anim.SetTrigger("Dying");
-            Destroy(turret);
+            Debug.Log("Just hit a turret");
+            turret.gameObject.SetActive(false);
         }
 
 
