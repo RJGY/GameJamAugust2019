@@ -19,7 +19,7 @@ public class HeartHealth : MonoBehaviour
 
     private void Start()
     {
-        _playerHandler = GetComponent<PlayerHandler>();
+        _playerHandler = GameObject.Find("Player").GetComponent<PlayerHandler>();
         // Calculate the health points per heart section.
 
         maxHealth = _playerHandler.maxHealth; // Grab the amount of max Health from the player handler.
