@@ -205,25 +205,8 @@ public class CharacterController2D : MonoBehaviour
 
             }
         }
-        //allows you to move from climbing on roof to climbing on wall
-        if (!Wrap0Free && IsClimbing)
-        {
-            IsFrontBlocked = true;
-        }
-        if (!Wrap1Free && IsClimbing)
-        {
-            IsFrontBlocked = true;
-        }
-
-        //allows you to move from climbing on wall to roof
-        if (!Wrap2Free && IsClimbing)
-        {
-            IsTopBlocked = true;
-        }
-        if (!Wrap3Free && IsClimbing)
-        {
-            IsTopBlocked = true;
-        }
+        
+        
         
 
 
@@ -303,7 +286,7 @@ public class CharacterController2D : MonoBehaviour
             Anim.SetFloat("ClimbSpeed", offsetY);
 
         //RaycastHit2D ladderHit = Physics2D.Raycast(m_LadderCheck.position, Vector2.up, m_LadderRayLength, m_WhatIsLadder);
-        if (IsFrontBlocked || IsTopBlocked )
+        if (IsFrontBlocked || IsTopBlocked || !Wrap0Free || !Wrap3Free)
         {
             if (offsetY != 0)
             {
