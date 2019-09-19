@@ -14,9 +14,9 @@ public class ScoreManager : MonoBehaviour
     {
         // designates the score as a particular object and creates a timer for the auto components
         scoreDisplay = GameObject.FindGameObjectWithTag("Score").GetComponent<Text>();
-        InvokeRepeating("Timer", 1, 0.25f);
+        
         //sets screen size to 9:16 ratio
-        Screen.SetResolution(800, 1424, true);
+        
     }
     public static void Increase()
     {
@@ -25,12 +25,6 @@ public class ScoreManager : MonoBehaviour
         
     }
     
-    private void Timer()
-    {
-        // changes the score every second based on the amountPerSecond
-        score += Click.amountPerSecond;
-        HighScore += Click.amountPerSecond;
-        Increase();
-    }
+    
 
 }
