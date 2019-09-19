@@ -99,17 +99,21 @@ public class CharacterController2D : MonoBehaviour
 
     private void FixedUpdate()
     {
-
+        if (!IsFacingUp)
+        {
+            // ... flip the player.
+            FlipUp();
+        }
         bool wasGrounded = IsGrounded;
         IsGrounded = false;
         Anim.SetBool("IsGrounded", false);
         IsFrontBlocked = false;
         IsTopBlocked = false;
         
-        Wrap0Free = true;
-        Wrap1Free = true;
-        Wrap2Free = true;
-        Wrap3Free = true;
+        Wrap0Free = false;
+        Wrap1Free = false;
+        Wrap2Free = false;
+        Wrap3Free = false;
         Anim.SetBool("IsRunning", false);
         Anim.SetBool("IsFrontBlocked", false);
         Anim.SetBool("TopSide", false);
@@ -170,7 +174,7 @@ public class CharacterController2D : MonoBehaviour
             {
                 if (colliders[i].gameObject != gameObject)
                 {
-                    Wrap0Free = false;
+                    Wrap0Free = true;
                 
 
             }
@@ -180,7 +184,7 @@ public class CharacterController2D : MonoBehaviour
             {
                 if (colliders[i].gameObject != gameObject)
                 {
-                    Wrap1Free = false;
+                    Wrap1Free = true;
                 
 
             }
@@ -190,7 +194,7 @@ public class CharacterController2D : MonoBehaviour
         {
             if (colliders[i].gameObject != gameObject)
             {
-                Wrap2Free = false;
+                Wrap2Free = true;
                 
 
             }
@@ -200,30 +204,13 @@ public class CharacterController2D : MonoBehaviour
         {
             if (colliders[i].gameObject != gameObject)
             {
-                Wrap3Free = false;
+                Wrap3Free = true;
                 
 
             }
         }
-        //allows you to move from climbing on roof to climbing on wall
-        if (!Wrap0Free && IsClimbing)
-        {
-            IsFrontBlocked = true;
-        }
-        if (!Wrap1Free && IsClimbing)
-        {
-            IsFrontBlocked = true;
-        }
-
-        //allows you to move from climbing on wall to roof
-        if (!Wrap2Free && IsClimbing)
-        {
-            IsTopBlocked = true;
-        }
-        if (!Wrap3Free && IsClimbing)
-        {
-            IsTopBlocked = true;
-        }
+        
+        
         
 
 
@@ -303,7 +290,7 @@ public class CharacterController2D : MonoBehaviour
             Anim.SetFloat("ClimbSpeed", offsetY);
 
         //RaycastHit2D ladderHit = Physics2D.Raycast(m_LadderCheck.position, Vector2.up, m_LadderRayLength, m_WhatIsLadder);
-        if (IsFrontBlocked || IsTopBlocked )
+        if (IsFrontBlocked || IsTopBlocked || Wrap0Free || Wrap3Free || Wrap1Free || Wrap2Free)
         {
             if (offsetY != 0)
             {
