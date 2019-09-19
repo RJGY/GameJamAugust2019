@@ -229,10 +229,36 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8831846116218631239, guid: 9d6f49b38d6b4744baebc3126ef6d80a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 280.47507
+      objectReference: {fileID: 0}
+    - target: {fileID: 9029946950523161039, guid: 9d6f49b38d6b4744baebc3126ef6d80a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 376.24704
+      objectReference: {fileID: 0}
+    - target: {fileID: 9029946951233282878, guid: 9d6f49b38d6b4744baebc3126ef6d80a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 180.14252
+      objectReference: {fileID: 0}
     - target: {fileID: 6515672819559161105, guid: 9d6f49b38d6b4744baebc3126ef6d80a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 5
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7039543009059058557, guid: 9d6f49b38d6b4744baebc3126ef6d80a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 709910140474cc14d89fe1f2238a1298,
+        type: 3}
+    - target: {fileID: 7905123140124945131, guid: 9d6f49b38d6b4744baebc3126ef6d80a,
+        type: 3}
+      propertyPath: m_Text
+      value: Main Menu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d6f49b38d6b4744baebc3126ef6d80a, type: 3}

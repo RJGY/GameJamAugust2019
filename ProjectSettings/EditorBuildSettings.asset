@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Mitchell/scenes/Ground.unity
     guid: 22d8ed68285614346b5e320fa622c440
+  - enabled: 1
+    path: Assets/Menu/Tutorial.unity
+    guid: dffd8c9e698314a4da722de30b0dcdf4
   m_configObjects: {}
