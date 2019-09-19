@@ -7,21 +7,22 @@ public class ScoreManager : MonoBehaviour
    
     public static int score;
     public static int HighScore;
-    public static Text scoreDisplay;
-    public float timer;
+    public Text scoreDisplay;
+    private GameManager _gameManager;
 
     private void Start()
     {
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         // designates the score as a particular object and creates a timer for the auto components
-        scoreDisplay = GameObject.FindGameObjectWithTag("Score").GetComponent<Text>();
+        scoreDisplay = GetComponent<Text>();
         
         //sets screen size to 9:16 ratio
         
     }
-    public static void Increase()
+    public void Update()
     {
         //displays the change in score
-        scoreDisplay.text = "Score: " + score;
+        scoreDisplay.text = "" + _gameManager.score;
         
     }
     
