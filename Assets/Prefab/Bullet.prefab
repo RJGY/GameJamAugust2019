@@ -44,7 +44,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.04}
@@ -79,7 +79,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8800165919391208230, guid: 450cacd2358dc3544b9c5b1331d232f0,
           type: 3}
-        m_MethodName: Death
+        m_MethodName: LoseAHeart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
