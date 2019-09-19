@@ -44,7 +44,6 @@ public class EnemyDeath : MonoBehaviour
             guard.anim.SetTrigger("Dying");
             Debug.Log("Just hit a guard");
             SoundManager.Instance.PlaySound("Man Death");
-            guard.gameObject.SetActive(false);
         }
 
         else if (runner != null)
@@ -52,7 +51,6 @@ public class EnemyDeath : MonoBehaviour
             runner.Anim.SetTrigger("Dying");
             Debug.Log("Just hit a runner");
             SoundManager.Instance.PlaySound("Death of dog");
-            runner.gameObject.SetActive(false);
         }
 
         else if (turret != null)
@@ -60,7 +58,6 @@ public class EnemyDeath : MonoBehaviour
             SoundManager.Instance.PlaySound("Turret destroyed");
             turret.anim.SetTrigger("Dying");
             Debug.Log("Just hit a turret");
-            turret.gameObject.SetActive(false);
         }
 
 

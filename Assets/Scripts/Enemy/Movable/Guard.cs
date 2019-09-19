@@ -206,7 +206,6 @@ public class Guard : MonoBehaviour
             float distance = Vector2.Distance(transform.position, currentPlayer.position);
             if (distance < killRadius && !GameManager.Instance.gameEnded)
             {
-                GameManager.Instance.GameOver();
                 triggerEvent.Interact();
                 Debug.Log("HELP");
             }

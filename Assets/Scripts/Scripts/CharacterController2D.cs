@@ -50,7 +50,9 @@ public class CharacterController2D : MonoBehaviour
     public bool IsDead { get; private set; } = false;
     public Rigidbody2D Rigidbody { get; private set; }
     public Animator Anim { get; private set; }
-
+    public PlayerHandler playerHandler;
+    public bool invincible;
+    public Animator shield;
     public bool HasParameter(string paramName, Animator animator)
     {
         foreach (AnimatorControllerParameter param in animator.parameters)
@@ -65,6 +67,7 @@ public class CharacterController2D : MonoBehaviour
     // Internal Methods
     private void Awake()
     {
+        playerHandler = GetComponent<PlayerHandler>();
         Rigidbody = GetComponent<Rigidbody2D>();
         Anim = GetComponent<Animator>();
         m_OriginalGravityScale = Rigidbody.gravityScale;
@@ -246,13 +249,11 @@ public class CharacterController2D : MonoBehaviour
             {
                 if (hit.collider.GetComponent<EnemyDeath>() != null)
                 {
-                    hit.collider.SendMessage("OnDeath");
+                    hit.collider.GetComponent<EnemyDeath>().SendMessage("OnDeath");
+                    Debug.Log("i hit a dude just then its line 251");
                 }
 
-                else if (hit.collider.GetComponent<Bullet>() != null)
-                {
-                    hit.collider.SendMessage("Punched");
-                }
+
             }
         }
         
@@ -423,6 +424,22 @@ public class CharacterController2D : MonoBehaviour
             }
         }
 
+    }
+
+    public void LoseAHeart()
+    {
+        if (!invincible)
+        {
+            playerHandler.curHealth--;
+            invincible = true;
+            shield.SetTrigger("GotHit");
+            Invoke("InvincibleSwitch", 2f);
+        }
+    }
+
+    void InvincibleSwitch()
+    {
+        invincible = false;
     }
 
     public void Death()
