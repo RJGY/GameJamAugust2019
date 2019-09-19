@@ -430,7 +430,7 @@ public class CharacterController2D : MonoBehaviour
     {
         if (!invincible)
         {
-            playerHandler.curHealth--;
+            playerHandler.curHealth -= 1;
             invincible = true;
             shield.SetTrigger("GotHit");
             Invoke("InvincibleSwitch", 2f);

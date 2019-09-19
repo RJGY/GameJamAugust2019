@@ -250,6 +250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9191086197817188932}
   - component: {fileID: 1036250661394561610}
+  - component: {fileID: 3026124625658857964}
   m_Layer: 9
   m_Name: Shield
   m_TagString: Untagged
@@ -309,7 +310,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 86b7d083dcdfacd4480cffebce4e5c5e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -319,6 +320,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &3026124625658857964
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3026124625658857963}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 64a287efc9247bb49a44122b9f756306, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3863235918404336271
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,6 +560,8 @@ MonoBehaviour:
   IsFacingUp: 1
   JumpAngle: 0
   playerHandler: {fileID: 0}
+  invincible: 0
+  shield: {fileID: 0}
 --- !u!70 &8800165919391208248
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -674,12 +696,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6656d444852a0c44b0e2af7d97ccc5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
-  maxMana: 3
-  maxStamina: 3
-  curHealth: 3
-  curMana: 3
-  curStamina: 3
+  maxHealth: 0
+  maxMana: 0
+  maxStamina: 0
+  curHealth: 0
+  curMana: 0
+  curStamina: 0
 --- !u!1 &8800165919956458443
 GameObject:
   m_ObjectHideFlags: 0

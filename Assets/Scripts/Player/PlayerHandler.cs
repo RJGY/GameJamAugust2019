@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class PlayerHandler : MonoBehaviour
 {
-    public float maxHealth, maxMana, maxStamina;
-    public float curHealth, curMana, curStamina;
+    public int maxHealth, maxMana, maxStamina;
+    public int curHealth, curMana, curStamina;
     private CharacterController2D controller;
     private UIManager _uiManager;
 
@@ -19,11 +19,11 @@ public class PlayerHandler : MonoBehaviour
     void Start()
     {
         maxHealth = 3;
-        maxMana = 100;
-        maxStamina = 100;
+        maxMana = 69;
+        maxStamina = 3;
         curHealth = 3;
-        curMana = 100;
-        curStamina = 100;
+        curMana = 3;
+        curStamina = 3;
         controller = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController2D>();
     }
 
