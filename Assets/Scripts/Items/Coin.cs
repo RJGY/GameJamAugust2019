@@ -23,7 +23,6 @@ public class Coin : MonoBehaviour
         {
             _gameManager.score++;
             gameObject.SetActive(false);
-            ScoreManager.Increase();
         }
     }
 }
