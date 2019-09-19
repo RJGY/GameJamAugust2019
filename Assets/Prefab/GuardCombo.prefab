@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 522016449050055566}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalPosition: {x: 9.229507, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 107869239165269734}
@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 766095537146044351}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 0, z: 0}
+  m_LocalPosition: {x: -3.7704926, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 107869239165269734}
@@ -136,11 +136,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Guard
       objectReference: {fileID: 0}
-    - target: {fileID: 5442921658238903325, guid: 6c59db86b2fc86c4f86b603173e84e8f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5442921658238903314, guid: 6c59db86b2fc86c4f86b603173e84e8f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -200,17 +195,7 @@ PrefabInstance:
         type: 3}
       propertyPath: waypointParent
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2351858127163154619, guid: 6c59db86b2fc86c4f86b603173e84e8f,
-        type: 3}
-      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2351858127163154619, guid: 6c59db86b2fc86c4f86b603173e84e8f,
-        type: 3}
-      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Death
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 107869239165269734}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c59db86b2fc86c4f86b603173e84e8f, type: 3}
 --- !u!4 &9080731457034499286 stripped
