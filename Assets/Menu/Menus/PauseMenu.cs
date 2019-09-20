@@ -37,6 +37,10 @@ public class PauseMenu : MonoBehaviour
             DeathScreen();
         }
     }
+    public void Start()
+    {
+        TogglePause();
+    }
     public void TogglePause()
     {
         if(isPaused)//if we are set to true
