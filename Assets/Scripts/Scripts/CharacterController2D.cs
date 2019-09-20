@@ -278,9 +278,7 @@ public class CharacterController2D : MonoBehaviour
         IsFacingUp = !IsFacingUp;
 
         // Multiply the player's x local scale by -1.
-        Vector3 theScale = transform.localScale;
-        theScale.y *= -1;
-        transform.localScale = theScale;
+        GetComponent<SpriteRenderer>().flipY = !IsFacingUp;
     }
 
     // >> Custom methods go here <<
@@ -314,7 +312,7 @@ public class CharacterController2D : MonoBehaviour
         {
             Rigidbody.gravityScale = 0;
             Rigidbody.velocity = new Vector2(Rigidbody.velocity.x, offsetY);
-            if (offsetY > 0 && !IsFacingUp)
+            if (offsetY > 0 && !IsFacingUp && IsFrontBlocked)
             {
                 // ... flip the player.
                 FlipUp();
