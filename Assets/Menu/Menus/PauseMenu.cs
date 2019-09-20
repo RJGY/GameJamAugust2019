@@ -20,7 +20,7 @@ public class PauseMenu : MonoBehaviour
         _pauseButton = GameObject.FindGameObjectWithTag("PauseButoon");
         _restartButton = GameObject.FindGameObjectWithTag("Respawn");
         _pauseTitle = GameObject.FindGameObjectWithTag("PauseTitle");
-
+        
         _restartButton.SetActive(false);
         _pauseMenu.SetActive(true); // show pause menu
         isPaused = true;//we are  paused
@@ -45,6 +45,7 @@ public class PauseMenu : MonoBehaviour
     {
         if(isPaused)//if we are set to true
         {
+
             _pauseMenu.SetActive(false);//hide pause menu
             isPaused = false;//we are not paused
             Time.timeScale = 1;//start time
@@ -53,6 +54,7 @@ public class PauseMenu : MonoBehaviour
         else//if we are set to false
         {
             _pauseMenu.SetActive(true);//show pause menu
+            _pauseTitle.text = "Paused";
             isPaused = true;//we are now paused
             Time.timeScale = 0;//stop time
             
@@ -62,7 +64,8 @@ public class PauseMenu : MonoBehaviour
     {
         
             _pauseMenu.SetActive(true);//show pause menu
-            isPaused = true;//we are now paused
+        _pauseTitle.text = "You are dead";
+        isPaused = true;//we are now paused
             Time.timeScale = 0;//stop time
             _pauseButton.SetActive(false);
             _restartButton.SetActive(true);
