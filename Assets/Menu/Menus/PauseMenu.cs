@@ -9,6 +9,7 @@ public class PauseMenu : MonoBehaviour
     private GameObject _pauseButton;
     private GameObject _restartButton;
     private GameObject _pauseTitle;
+    private GameObject _pauseInitial;
 
     // Reference
     private CharacterController2D controller;
@@ -19,8 +20,8 @@ public class PauseMenu : MonoBehaviour
         _pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
         _pauseButton = GameObject.FindGameObjectWithTag("PauseButoon");
         _restartButton = GameObject.FindGameObjectWithTag("Respawn");
-        _pauseTitle = GameObject.FindGameObjectWithTag("PauseTitle");
-        
+        _pauseInitial = GameObject.FindGameObjectWithTag("PauseTitle");
+        _pauseTitle = _pauseInitial.GetComponent<text>();
         _restartButton.SetActive(false);
         _pauseMenu.SetActive(true); // show pause menu
         isPaused = true;//we are  paused
@@ -40,6 +41,9 @@ public class PauseMenu : MonoBehaviour
     public void Start()
     {
         TogglePause();
+        
+
+
     }
     public void TogglePause()
     {
