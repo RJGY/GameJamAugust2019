@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -8,9 +9,9 @@ public class PauseMenu : MonoBehaviour
     private GameObject _pauseMenu;
     private GameObject _pauseButton;
     private GameObject _restartButton;
-    private GameObject _pauseTitle;
+    
     private GameObject _pauseInitial;
-
+    public Text _pauseTitle;
     // Reference
     private CharacterController2D controller;
     void Awake()//start of the game set the defaults
@@ -20,8 +21,9 @@ public class PauseMenu : MonoBehaviour
         _pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
         _pauseButton = GameObject.FindGameObjectWithTag("PauseButoon");
         _restartButton = GameObject.FindGameObjectWithTag("Respawn");
-        _pauseInitial = GameObject.FindGameObjectWithTag("PauseTitle");
-        _pauseTitle = _pauseInitial.GetComponent<text>();
+
+        _pauseTitle = GameObject.FindGameObjectWithTag("PauseTitle").GetComponent<Text>();
+
         _restartButton.SetActive(false);
         _pauseMenu.SetActive(true); // show pause menu
         isPaused = true;//we are  paused
