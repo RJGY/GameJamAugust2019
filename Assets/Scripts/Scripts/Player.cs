@@ -27,9 +27,9 @@ public class Player : MonoBehaviour
     {
         controller = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController2D>();
         animator = GetComponent<Animator>();
-        jumpHeight = 5; // how high he jumps
-     climbSpeed = 10; // how fast he climbs
-     moveSpeed = 10; //how fast he moves
+        jumpHeight = 5f; // how high he jumps
+     climbSpeed = 10f; // how fast he climbs
+     moveSpeed = 10f; //how fast he moves
      
 
 }
