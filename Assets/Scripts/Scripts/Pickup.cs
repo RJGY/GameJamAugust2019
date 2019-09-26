@@ -6,25 +6,26 @@ using UnityEngine.SceneManagement;
 public class Pickup : MonoBehaviour
 {
     private bool Invincible = false;
+    private PlayerHandler _playerHandler;
     private void OnTriggerEnter2D(Collider2D other)
     {
        
-        float healthCount = gameObject.GetComponent<PlayerHandler>().curHealth / gameObject.GetComponent<PlayerHandler>().maxHealth;
+        float healthCount = _playerHandler.currentHealth / _playerHandler.maxHealth;
         if (other.tag == "Health" && healthCount < 1)
         {
-            gameObject.GetComponent<PlayerHandler>().curHealth += 1;
+            _playerHandler.currentHealth += 1;
             Destroy(other.gameObject);
         }
         if (other.tag == "DangerZone" && !Invincible)
         {
-            gameObject.GetComponent<PlayerHandler>().curHealth -= 1;
+            _playerHandler.currentHealth -= 1;
             Destroy(other.gameObject);
             StartCoroutine(GotHurt());
         }
         if (other.tag == "Spike" && !Invincible)
         {
-            
-            gameObject.GetComponent<PlayerHandler>().curHealth -= 1;
+
+            _playerHandler.currentHealth -= 1;
             StartCoroutine(GotHurt());
         }
 

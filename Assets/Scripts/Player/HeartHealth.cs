@@ -28,9 +28,9 @@ public class HeartHealth : MonoBehaviour
 
     private void Update()
     {
-        if (curHealth != _playerHandler.curHealth)
+        if (curHealth != _playerHandler.currentHealth)
         {
-            curHealth = _playerHandler.curHealth;
+            curHealth = _playerHandler.currentHealth;
             UpdateHeart();
         }
     }

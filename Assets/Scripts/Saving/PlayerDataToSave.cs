@@ -21,7 +21,7 @@ public class PlayerDataToSave
         maxMana = player.maxMana;
         maxStamina = player.maxStamina;
 
-        currentHealth = player.curHealth;
+        currentHealth = player.currentHealth;
         currentMana = player.curMana;
         currentStamina = player.curStamina;
 

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class PlayerHandler : MonoBehaviour
 {
     public int maxHealth, maxMana, maxStamina;
-    public int curHealth, curMana, curStamina;
+    public int currentHealth, curMana, curStamina;
     private CharacterController2D controller;
     private UIManager _uiManager;
 
@@ -19,9 +19,9 @@ public class PlayerHandler : MonoBehaviour
     void Start()
     {
         maxHealth = 3;
-        maxMana = 69;
+        maxMana = 3;
         maxStamina = 3;
-        curHealth = 3;
+        currentHealth = 3;
         curMana = 3;
         curStamina = 3;
         controller = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController2D>();
@@ -30,7 +30,7 @@ public class PlayerHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (curHealth <= 0)
+        if (currentHealth <= 0)
         {
             controller.Death();
         }

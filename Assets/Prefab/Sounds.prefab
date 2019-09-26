@@ -137,6 +137,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2647638597472925117, guid: df9783604f069f7449a06f325d7eeabb,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df9783604f069f7449a06f325d7eeabb, type: 3}
 --- !u!82 &2724570170633188657 stripped
@@ -216,6 +221,11 @@ PrefabInstance:
     - target: {fileID: 6896035236063111454, guid: a6d0fd44f31b761498d34c124d1b5ab2,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 57297143326648605, guid: a6d0fd44f31b761498d34c124d1b5ab2,
+        type: 3}
+      propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -299,6 +309,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pistol shot 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6485105336487269935, guid: 1491236f373df824c99a91782a7f6167,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1491236f373df824c99a91782a7f6167, type: 3}
 --- !u!82 &4757159922355688315 stripped
@@ -378,6 +393,11 @@ PrefabInstance:
     - target: {fileID: 9112810260795315661, guid: 28b9601c9eb8e164f9e44d0c61992c48,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479700560849990824, guid: 28b9601c9eb8e164f9e44d0c61992c48,
+        type: 3}
+      propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -461,6 +481,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5710734310024444832, guid: ca58ac705b2c9964ebf136a1a739e177,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca58ac705b2c9964ebf136a1a739e177, type: 3}
 --- !u!4 &4467262167855232325 stripped
@@ -542,6 +567,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: sword swing 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5229720783044752537, guid: 0a542fe922c24f946abd89ee3aa8a300,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a542fe922c24f946abd89ee3aa8a300, type: 3}
 --- !u!82 &7357807412412142567 stripped
@@ -621,6 +651,11 @@ PrefabInstance:
     - target: {fileID: 8969540054679129434, guid: c28ac90f8cc26d84799cbb181fd39801,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3343677761698831165, guid: c28ac90f8cc26d84799cbb181fd39801,
+        type: 3}
+      propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -704,6 +739,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8841327563132084985, guid: ec9efd41b46f03b4c874bd4b65d1070f,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec9efd41b46f03b4c874bd4b65d1070f, type: 3}
 --- !u!82 &4752179573795254780 stripped
@@ -785,6 +825,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pistol shot 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7479362007987493324, guid: 60bcc9d19a0b12f4781156a28bebfce6,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60bcc9d19a0b12f4781156a28bebfce6, type: 3}
 --- !u!82 &2325632284767184111 stripped
@@ -864,6 +909,11 @@ PrefabInstance:
     - target: {fileID: 9056300322609722097, guid: 886b36476f6850740a9566051d7345bb,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068052248026449706, guid: 886b36476f6850740a9566051d7345bb,
+        type: 3}
+      propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -947,6 +997,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6066337694018222994, guid: b36dbfab660179742ad84de3f664fe77,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b36dbfab660179742ad84de3f664fe77, type: 3}
 --- !u!82 &4094152092977355821 stripped
@@ -1028,6 +1083,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pistol shot 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1448266890493708851, guid: 3be4f8eb61192934e962b948335a97e8,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3be4f8eb61192934e962b948335a97e8, type: 3}
 --- !u!4 &8092490028896536082 stripped
@@ -1108,6 +1168,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: goop explosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 5653624248019058638, guid: 068a29328324f3840964706d53e9b6b9,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 068a29328324f3840964706d53e9b6b9, type: 3}

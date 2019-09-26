@@ -559,9 +559,9 @@ MonoBehaviour:
   IsFacingRight: 1
   IsFacingUp: 1
   JumpAngle: 0
-  playerHandler: {fileID: 0}
+  _playerHandler: {fileID: 0}
   invincible: 0
-  shield: {fileID: 0}
+  shield: {fileID: 3026124625658857964}
 --- !u!70 &8800165919391208248
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -696,12 +696,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6656d444852a0c44b0e2af7d97ccc5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  maxMana: 0
-  maxStamina: 0
-  curHealth: 0
-  curMana: 0
-  curStamina: 0
+  maxHealth: 3
+  maxMana: 3
+  maxStamina: 3
+  currentHealth: 3
+  curMana: 3
+  curStamina: 3
 --- !u!1 &8800165919956458443
 GameObject:
   m_ObjectHideFlags: 0

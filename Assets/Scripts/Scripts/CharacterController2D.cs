@@ -50,7 +50,8 @@ public class CharacterController2D : MonoBehaviour
     public bool IsDead { get; private set; } = false;
     public Rigidbody2D Rigidbody { get; private set; }
     public Animator Anim { get; private set; }
-    public PlayerHandler playerHandler;
+    [SerializeField]
+    private PlayerHandler _playerHandler;
     public bool invincible;
     public Animator shield;
     public bool HasParameter(string paramName, Animator animator)
@@ -67,7 +68,7 @@ public class CharacterController2D : MonoBehaviour
     // Internal Methods
     private void Awake()
     {
-        playerHandler = GetComponent<PlayerHandler>();
+        _playerHandler = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHandler>();
         Rigidbody = GetComponent<Rigidbody2D>();
         Anim = GetComponent<Animator>();
         m_OriginalGravityScale = Rigidbody.gravityScale;
@@ -428,10 +429,11 @@ public class CharacterController2D : MonoBehaviour
     {
         if (!invincible)
         {
-            playerHandler.curHealth -= 1;
+            _playerHandler.currentHealth--;
             invincible = true;
             shield.SetTrigger("GotHit");
             Invoke("InvincibleSwitch", 2f);
+            Debug.Log("I should take damage here");
         }
     }
 
