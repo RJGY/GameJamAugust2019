@@ -572,7 +572,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 8800165919391208253}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: c8ab62f8e8b2f174a93732293cbfdf07, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -594,7 +594,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 2
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -616,7 +616,7 @@ MonoBehaviour:
   MusicSource: {fileID: 0}
   jumpHeight: 10
   climbSpeed: 10
-  moveSpeed: 10
+  moveSpeed: 20
   curPortal: 10
 --- !u!95 &8800165919391208254
 Animator:

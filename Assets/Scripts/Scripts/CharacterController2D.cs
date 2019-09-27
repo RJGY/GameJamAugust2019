@@ -114,7 +114,7 @@ public class CharacterController2D : MonoBehaviour
         Anim.SetBool("IsGrounded", false);
         IsFrontBlocked = false;
         IsTopBlocked = false;
-        
+
         Wrap0Free = false;
         Wrap1Free = false;
         Wrap2Free = false;
@@ -122,7 +122,7 @@ public class CharacterController2D : MonoBehaviour
         Anim.SetBool("IsRunning", false);
         Anim.SetBool("IsFrontBlocked", false);
         Anim.SetBool("TopSide", false);
-        
+
         // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
         // This can be done using layers instead but Sample Assets will not overwrite your project settings.
         Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, m_GroundedRadius, m_WhatIsGround);
@@ -171,36 +171,36 @@ public class CharacterController2D : MonoBehaviour
                 CanHurt = true;
             }
         }
-        
-        
-           
-            colliders = Physics2D.OverlapCircleAll(m_Wrap0.position, m_Wrap0Radius, m_WhatIsGround);
-            for (int i = 0; i < colliders.Length; i++)
+
+
+
+        colliders = Physics2D.OverlapCircleAll(m_Wrap0.position, m_Wrap0Radius, m_WhatIsGround);
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (colliders[i].gameObject != gameObject)
             {
-                if (colliders[i].gameObject != gameObject)
-                {
-                    Wrap0Free = true;
-                
+                Wrap0Free = true;
+
 
             }
-            }
-            colliders = Physics2D.OverlapCircleAll(m_Wrap1.position, m_Wrap1Radius, m_WhatIsGround);
-            for (int i = 0; i < colliders.Length; i++)
+        }
+        colliders = Physics2D.OverlapCircleAll(m_Wrap1.position, m_Wrap1Radius, m_WhatIsGround);
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (colliders[i].gameObject != gameObject)
             {
-                if (colliders[i].gameObject != gameObject)
-                {
-                    Wrap1Free = true;
-                
+                Wrap1Free = true;
+
 
             }
-            }
+        }
         colliders = Physics2D.OverlapCircleAll(m_Wrap2.position, m_Wrap2Radius, m_WhatIsGround);
         for (int i = 0; i < colliders.Length; i++)
         {
             if (colliders[i].gameObject != gameObject)
             {
                 Wrap2Free = true;
-                
+
 
             }
         }
@@ -210,13 +210,13 @@ public class CharacterController2D : MonoBehaviour
             if (colliders[i].gameObject != gameObject)
             {
                 Wrap3Free = true;
-                
+
 
             }
         }
-        
-        
-        
+
+
+
 
 
 
@@ -244,7 +244,7 @@ public class CharacterController2D : MonoBehaviour
             }
         }
 
-        else if(!IsFacingRight) // ITS ACTUALLY FACING RIGHT
+        else if (!IsFacingRight) // ITS ACTUALLY FACING RIGHT
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, 2f, ~WhatIsMe);
             if (hit.collider != null)
@@ -258,7 +258,7 @@ public class CharacterController2D : MonoBehaviour
 
             }
         }
-        
+
 
     }
 
@@ -300,7 +300,7 @@ public class CharacterController2D : MonoBehaviour
 
             }
         }
-        
+
 
 
         else
@@ -408,8 +408,8 @@ public class CharacterController2D : MonoBehaviour
 
             Vector3 velocity = Vector3.zero;
             // And then smoothing it out and applying it to the character
-            Rigidbody.velocity = Vector3.SmoothDamp(Rigidbody.velocity, targetVelocity, ref velocity, m_MovementSmoothing);
-
+            //Rigidbody.velocity = Vector3.SmoothDamp(Rigidbody.velocity, targetVelocity, ref velocity, m_MovementSmoothing);
+            Rigidbody.velocity = targetVelocity;
             // If the input is moving the player right and the player is facing left...
             if (offsetX > 0 && IsFacingRight)
             {

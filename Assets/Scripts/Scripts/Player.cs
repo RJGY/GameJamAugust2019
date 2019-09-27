@@ -28,15 +28,15 @@ public class Player : MonoBehaviour
         controller = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController2D>();
         animator = GetComponent<Animator>();
 
+        // how high he jumps
+
         jumpHeight = 5f; // how high he jumps
 
-        jumpHeight = 10f; // how high he jumps
+        climbSpeed = 10f; // how fast he climbs
+        moveSpeed = 10f; //how fast he moves
 
-     climbSpeed = 10f; // how fast he climbs
-     moveSpeed = 10f; //how fast he moves
-     
 
-}
+    }
 
     /*/private void OnDrawGizmos()
     {
@@ -57,25 +57,21 @@ public class Player : MonoBehaviour
     {
         if (!controller.IsDead)
         {
-            float horizontal = Input.GetAxis("Horizontal");
-            float vertical = Input.GetAxis("Vertical");
+            float horizontal = Input.GetAxisRaw("Horizontal");
+            float vertical = Input.GetAxisRaw("Vertical");
             bool isJumping = Input.GetButtonDown("Jump");
             if (Input.GetButtonDown("Fire1"))
             {
                 Invoke("Attack", 0.5f);
-                SoundManager.Instance.PlaySound("Attack");
+                //SoundManager.Instance.PlaySound("Attack");
             }
             if (isJumping)
             {
                 animator.SetBool("IsJumping", true);
                 controller.Jump(jumpHeight);
-
-
             }
 
             controller.Climb(vertical * climbSpeed);
-
-
             controller.Move(horizontal * moveSpeed);
         }
     }
