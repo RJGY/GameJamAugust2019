@@ -17,7 +17,7 @@ public class Guard : MonoBehaviour
     public float killRadius = 0.5f;
     public bool facingRight = true;
     public bool facingLeft = false;
-    private PlayerHandler _playerHandler;
+    public PlayerHandler _playerHandler;
     private Pickup _pickup;
     // Animation stuff.
     public Animator anim;
@@ -207,7 +207,7 @@ public class Guard : MonoBehaviour
             float distance = Vector2.Distance(transform.position, currentPlayer.position);
             if (distance < killRadius && !GameManager.Instance.gameEnded)
             {
-                SendMessage("Interact");
+               // SendMessage("Interact");
                 _playerHandler.currentHealth -= 1;
 
                 StartCoroutine(_pickup.GotHurt());

@@ -13,7 +13,7 @@ public class Bullet : MonoBehaviour
     private bool movingToLeft = false;
 
     private Vector3 startingPoint;
-    private PlayerHandler _playerHandler;
+    public PlayerHandler _playerHandler;
     private Pickup _pickup;
     // Start is called before the first frame update
     void Start()

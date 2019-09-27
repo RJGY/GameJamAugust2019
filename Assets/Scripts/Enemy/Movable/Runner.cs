@@ -23,7 +23,7 @@ public class Runner : MonoBehaviour
     public bool facingLeft = false;
     public bool facingRight = true;
     public Animator Anim;
-    private PlayerHandler _playerHandler;
+    public PlayerHandler _playerHandler;
     private Pickup _pickup;
     // Start is called before the first frame update
     void Start()
@@ -242,8 +242,10 @@ public class Runner : MonoBehaviour
             if (distance < killRadius && !GameManager.Instance.gameEnded)
             {
                 // Works but kills them over and over.
-                SendMessage("Interact");
-                
+                //SendMessage("Interact");
+                _playerHandler.currentHealth -= 1;
+
+                StartCoroutine(_pickup.GotHurt());
             }
         }
     }

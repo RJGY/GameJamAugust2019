@@ -158,7 +158,7 @@ public class Boss : MonoBehaviour
         float distance = Vector2.Distance(transform.position, currentPlayer.position);
         if (distance < killRadius && !GameManager.Instance.gameEnded)
         {
-            SendMessage("Interact");
+            //SendMessage("Interact");
             _playerHandler.currentHealth -= 1;
             
             StartCoroutine(_pickup.GotHurt());
