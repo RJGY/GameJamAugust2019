@@ -23,8 +23,10 @@ public class Runner : MonoBehaviour
     public bool facingLeft = false;
     public bool facingRight = true;
     public Animator Anim;
-// Start is called before the first frame update
-void Start()
+    private PlayerHandler _playerHandler;
+    private Pickup _pickup;
+    // Start is called before the first frame update
+    void Start()
     {
         points = waypointParent.GetComponentsInChildren<Transform>();
     }
@@ -232,12 +234,16 @@ void Start()
             if (distance < (killRadius + 1) && !GameManager.Instance.gameEnded)
             {
                 Anim.SetTrigger("Attack");
+                _playerHandler.currentHealth -= 1;
+
+                StartCoroutine(_pickup.GotHurt());
             }
 
             if (distance < killRadius && !GameManager.Instance.gameEnded)
             {
                 // Works but kills them over and over.
                 SendMessage("Interact");
+                
             }
         }
     }
