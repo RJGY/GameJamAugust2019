@@ -35,7 +35,7 @@ public class HeartHealth : MonoBehaviour
         }
     }
 
-    void UpdateHeart()
+    public void UpdateHeart()
     {
         // Index variable starting at 0 for our slot check.
         // For all the hearts we have:

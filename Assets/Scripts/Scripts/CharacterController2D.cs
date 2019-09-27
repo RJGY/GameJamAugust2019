@@ -23,9 +23,10 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private float m_GroundedRadius = .05f;                      // Radius of the overlap circle to determine if grounded
     [SerializeField] private float m_FrontCheckRadius = .05f, m_TopCheckRadius = .05f, m_AttackCheckRadius = 0.05f, m_HitBoxRadius = .05f, m_Wrap0Radius = .05f, m_Wrap1Radius = .05f, m_Wrap2Radius = .05f, m_Wrap3Radius = .05f;                    // Radius of the overlap circle to determine if front is blocked
     [SerializeField] private float m_GroundRayLength = .2f;                     // Length of the ray beneith controller
-                                                                                //[SerializeField] private float m_LadderRayLength = .5f;                     // Length of the ray above controller
 
+    //[SerializeField] private float m_LadderRayLength = .5f;                     // Length of the ray above controller
 
+    public HeartHealth _hearthealth;
     private float m_OriginalGravityScale;
 
     [Header("Events")]
@@ -430,10 +431,12 @@ public class CharacterController2D : MonoBehaviour
         if (!invincible)
         {
             _playerHandler.currentHealth--;
+            _hearthealth.UpdateHeart();
             invincible = true;
             shield.SetTrigger("GotHit");
             Invoke("InvincibleSwitch", 2f);
             Debug.Log("I should take damage here");
+
         }
     }
 
