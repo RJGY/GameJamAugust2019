@@ -23,6 +23,8 @@ public class Boss : MonoBehaviour
     public GameObject gooBallPrefab;
 
     public Animator anim;
+    private PlayerHandler _playerHandler;
+    private Pickup _pickup;
 
     // Start is called before the first frame update
     void Start()
@@ -157,6 +159,9 @@ public class Boss : MonoBehaviour
         if (distance < killRadius && !GameManager.Instance.gameEnded)
         {
             SendMessage("Interact");
+            _playerHandler.currentHealth -= 1;
+            
+            StartCoroutine(_pickup.GotHurt());
         }
 
     }
