@@ -453,7 +453,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8800165918722094333}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.009999998, y: -1, z: 0.043945312}
+  m_LocalPosition: {x: -0.37, y: -1.21, z: 0.043945312}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8800165919391208251}
@@ -559,7 +559,7 @@ MonoBehaviour:
   IsFacingRight: 1
   IsFacingUp: 1
   JumpAngle: 0
-  _playerHandler: {fileID: 0}
+  _playerHandler: {fileID: 293076457}
   invincible: 0
   shield: {fileID: 3026124625658857964}
 --- !u!70 &8800165919391208248
