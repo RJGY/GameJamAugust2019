@@ -13,7 +13,8 @@ public class Bullet : MonoBehaviour
     private bool movingToLeft = false;
 
     private Vector3 startingPoint;
-
+    private PlayerHandler _playerHandler;
+    private Pickup _pickup;
     // Start is called before the first frame update
     void Start()
     {
@@ -58,6 +59,9 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Destroy(gameObject);
+        _playerHandler.currentHealth -= 1;
+
+        StartCoroutine(_pickup.GotHurt());
     }
 
     public void Punched()
