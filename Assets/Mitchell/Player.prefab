@@ -550,6 +550,7 @@ MonoBehaviour:
   m_Wrap2Radius: 0.05
   m_Wrap3Radius: 0.05
   m_GroundRayLength: 0.2
+  _hearthealth: {fileID: 0}
   OnLandEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -571,7 +572,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 8800165919391208253}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: c8ab62f8e8b2f174a93732293cbfdf07, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -699,7 +700,7 @@ MonoBehaviour:
   maxHealth: 3
   maxMana: 3
   maxStamina: 3
-  currentHealth: 3
+  currentHealth: 2
   curMana: 3
   curStamina: 3
 --- !u!1 &8800165919956458443
