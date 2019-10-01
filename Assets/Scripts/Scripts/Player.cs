@@ -57,8 +57,8 @@ public class Player : MonoBehaviour
     {
         if (!controller.IsDead)
         {
-            float horizontal = Input.GetAxisRaw("Horizontal");
-            float vertical = Input.GetAxisRaw("Vertical");
+            float horizontal = Input.GetAxis("Horizontal");
+            float vertical = Input.GetAxis("Vertical");
             bool isJumping = Input.GetButtonDown("Jump");
             if (Input.GetButtonDown("Fire1"))
             {
