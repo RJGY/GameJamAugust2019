@@ -15,9 +15,9 @@ public class UIManager : MonoBehaviour
 
     public Text scoreText;
 
-    public Slider healthBar;
-    public Slider manaBar;
-    public Slider staminaBar;
+    //public Slider healthBar;
+    //public Slider manaBar;
+    //public Slider staminaBar;
 
     public Button respawnButton;
     private void Start()

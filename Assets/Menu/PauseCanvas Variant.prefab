@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 4863884224614332939, guid: 251295a7ed19991499981f3276ed53ba,
         type: 3}
       propertyPath: m_Name
-      value: PauseCanvas
+      value: PauseCanvas Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4863884224614333047, guid: 251295a7ed19991499981f3276ed53ba,
         type: 3}
@@ -116,11 +116,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4863884224614332936, guid: 251295a7ed19991499981f3276ed53ba,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 251295a7ed19991499981f3276ed53ba, type: 3}
