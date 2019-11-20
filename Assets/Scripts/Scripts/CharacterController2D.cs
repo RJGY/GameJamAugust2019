@@ -3,12 +3,7 @@ using UnityEngine.Events;
 
 public class CharacterController2D : MonoBehaviour
 {
-    /* 
-     * --- C# TIP ---
-     * Use SerializeField to expose private variables
-     * Private variables are not accessible through other scripts but will display in the Inspector
-    */
-
+   
     // Member Variables
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;  // How much to smooth out the movement
     [SerializeField] private bool m_AirControl = false;                         // Whether or not a player can steer while jumping
@@ -79,6 +74,7 @@ public class CharacterController2D : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
+        //gives us a set of gizmos we can place near the player to check other objects
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(m_GroundCheck.position, m_GroundedRadius);
         Gizmos.DrawWireSphere(m_FrontCheck.position, m_FrontCheckRadius);
@@ -96,9 +92,7 @@ public class CharacterController2D : MonoBehaviour
 
 
 
-        //Gizmos.color = Color.red;
-        //Ray ladderRay = new Ray(m_LadderCheck.position, Vector3.up);
-        //Gizmos.DrawLine(ladderRay.origin, ladderRay.origin + ladderRay.direction * m_LadderRayLength);
+        
     }
 
 
@@ -109,6 +103,7 @@ public class CharacterController2D : MonoBehaviour
             // ... flip the player.
             FlipUp();
         }
+       //makes the player automaticially have no gizmos activated
         bool wasGrounded = IsGrounded;
         IsGrounded = false;
         Anim.SetBool("IsGrounded", false);
@@ -131,7 +126,7 @@ public class CharacterController2D : MonoBehaviour
             if (colliders[i].gameObject != gameObject)
             {
                 IsGrounded = true;
-
+                //resets the jump and double jump when your on the ground
 
                 DoubleJump = true;
                 Anim.SetBool("IsGrounded", true);
@@ -140,7 +135,7 @@ public class CharacterController2D : MonoBehaviour
 
             }
         }
-
+        //if the front is blocked change your animation and bool
         colliders = Physics2D.OverlapCircleAll(m_FrontCheck.position, m_FrontCheckRadius, m_WhatIsGround);
         for (int i = 0; i < colliders.Length; i++)
         {
@@ -152,6 +147,7 @@ public class CharacterController2D : MonoBehaviour
 
             }
         }
+        //if the top is blocked change animation and bool
         colliders = Physics2D.OverlapCircleAll(m_TopCheck.position, m_TopCheckRadius, m_WhatIsGround);
         for (int i = 0; i < colliders.Length; i++)
         {
@@ -163,6 +159,7 @@ public class CharacterController2D : MonoBehaviour
 
             }
         }
+        //if the front is blocked by an enemy change animation and bool when attacking
         colliders = Physics2D.OverlapCircleAll(m_AttackCheck.position, m_AttackCheckRadius, m_WhatIsEnemy);
         for (int i = 0; i < colliders.Length; i++)
         {
@@ -172,7 +169,7 @@ public class CharacterController2D : MonoBehaviour
             }
         }
 
-
+        //if the wrap is blocked change animation and bool
 
         colliders = Physics2D.OverlapCircleAll(m_Wrap0.position, m_Wrap0Radius, m_WhatIsGround);
         for (int i = 0; i < colliders.Length; i++)
@@ -184,6 +181,7 @@ public class CharacterController2D : MonoBehaviour
 
             }
         }
+        //if the wrap is blocked change animation and bool
         colliders = Physics2D.OverlapCircleAll(m_Wrap1.position, m_Wrap1Radius, m_WhatIsGround);
         for (int i = 0; i < colliders.Length; i++)
         {
@@ -194,6 +192,7 @@ public class CharacterController2D : MonoBehaviour
 
             }
         }
+        //if the wrap is blocked change animation and bool
         colliders = Physics2D.OverlapCircleAll(m_Wrap2.position, m_Wrap2Radius, m_WhatIsGround);
         for (int i = 0; i < colliders.Length; i++)
         {
@@ -204,6 +203,7 @@ public class CharacterController2D : MonoBehaviour
 
             }
         }
+        //if the wrap is blocked change animation and bool
         colliders = Physics2D.OverlapCircleAll(m_Wrap3.position, m_Wrap3Radius, m_WhatIsGround);
         for (int i = 0; i < colliders.Length; i++)
         {
@@ -226,6 +226,7 @@ public class CharacterController2D : MonoBehaviour
 
     public void Attack()
     {
+        //makes the player attack and send a message to the enemy
         Anim.SetTrigger("Attack");
         if (IsFacingRight) // ITS ACTUALLY FACING LEFT
         {
@@ -262,7 +263,7 @@ public class CharacterController2D : MonoBehaviour
 
     }
 
-
+    
     public void Flip()
     {
         // Switch the way the player is labelled as facing.
@@ -276,21 +277,21 @@ public class CharacterController2D : MonoBehaviour
 
     public void FlipUp()
     {
-        // Switch the way the player is labelled as facing.
+        // Switch the way the player is labelled as facing up.
         IsFacingUp = !IsFacingUp;
 
-        // Multiply the player's x local scale by -1.
+        // Multiply the player's y local scale by -1.
         GetComponent<SpriteRenderer>().flipY = !IsFacingUp;
     }
 
-    // >> Custom methods go here <<
+   
 
     public void Climb(float offsetY)
     {
         if (HasParameter("ClimbSpeed", Anim))
             Anim.SetFloat("ClimbSpeed", offsetY);
 
-        //RaycastHit2D ladderHit = Physics2D.Raycast(m_LadderCheck.position, Vector2.up, m_LadderRayLength, m_WhatIsLadder);
+       //makes the player switch to climb when near a ground and move based on climb speed
         if (IsFrontBlocked || IsTopBlocked || Wrap0Free || Wrap3Free || Wrap1Free || Wrap2Free)
         {
             if (offsetY != 0)
@@ -302,14 +303,14 @@ public class CharacterController2D : MonoBehaviour
         }
 
 
-
+        //sticks to the wall
         else
         {
             IsClimbing = false;
             Anim.SetBool("IsClimbing", false);
 
         }
-
+        //flips the character up or down depending on which way you going
         if (IsClimbing)
         {
             Rigidbody.gravityScale = 0;
@@ -319,7 +320,7 @@ public class CharacterController2D : MonoBehaviour
                 // ... flip the player.
                 FlipUp();
             }
-            // Otherwise if the input is moving the player left and the player is facing right...
+            
             else if (offsetY < 0 && IsFacingUp)
             {
                 // ... flip the player.
@@ -333,6 +334,7 @@ public class CharacterController2D : MonoBehaviour
     }
     public void Jump(float height)
     {
+        
 
         // If the player should jump...
         if (IsGrounded)
@@ -344,6 +346,7 @@ public class CharacterController2D : MonoBehaviour
 
 
         }
+        //allows you to double jump
         else if (DoubleJump && !IsGrounded)
         {
             DoubleJump = false;
@@ -353,6 +356,7 @@ public class CharacterController2D : MonoBehaviour
 
 
         }
+        
         if (IsFrontBlocked)
         {
             Rigidbody.gravityScale = 0;
@@ -373,6 +377,7 @@ public class CharacterController2D : MonoBehaviour
     }
 
     // Move must be called last!
+    //moves the player depending on the other factors
     public void Move(float offsetX)
     {
         if (offsetX != 0)
@@ -408,7 +413,7 @@ public class CharacterController2D : MonoBehaviour
 
             Vector3 velocity = Vector3.zero;
             // And then smoothing it out and applying it to the character
-            //Rigidbody.velocity = Vector3.SmoothDamp(Rigidbody.velocity, targetVelocity, ref velocity, m_MovementSmoothing);
+            
             Rigidbody.velocity = targetVelocity;
             // If the input is moving the player right and the player is facing left...
             if (offsetX > 0 && IsFacingRight)
@@ -425,33 +430,14 @@ public class CharacterController2D : MonoBehaviour
         }
 
     }
-
-    public void LoseAHeart()
-    {
-        if (!invincible)
-        {
-            _playerHandler.currentHealth--;
-            _hearthealth.UpdateHeart();
-            invincible = true;
-            shield.SetTrigger("GotHit");
-            Invoke("InvincibleSwitch", 2f);
-            Debug.Log("I should take damage here");
-
-        }
-    }
-
-    void InvincibleSwitch()
-    {
-        invincible = false;
-    }
-
+    
+    //makes your character explode and die making the gameover scene occur
     public void Death()
     {
         Anim.SetTrigger("Dying");
         IsDead = true;
         GameManager.Instance.GameOver();
-        // UIManager - Activate red border
-        // Place Redborder sprite as a child into the Respawn button.        
+                
         IsHurt = true;
 
         SoundManager.Instance.PlaySound("PlayerDeath");

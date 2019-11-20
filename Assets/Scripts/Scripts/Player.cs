@@ -10,25 +10,19 @@ public class Player : MonoBehaviour
     public float jumpHeight = 5f; // how high he jumps
     public float climbSpeed = 10f; // how fast he climbs
     public float moveSpeed = 10f; //how fast he moves
-    public float curPortal = 10f;
-    //private Transform curPortal;
+   
+    
     private CharacterController2D controller;
     private Animator animator;
-    //private Interact interactObject;
-
-    /*
-    Create an 'interactObject' of Type 'Interact' 
-     - Set this variable using the OnTriggerEnter & OnTrigger Exit methods
-     - Refer to SunnyLand Project Line 86-91 & Line 96-101
-    */
-
+    
     // Start is called before the first frame update
     void Start()
     {
+        //makes the player have a character controller 
         controller = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController2D>();
         animator = GetComponent<Animator>();
 
-        // how high he jumps
+      
 
         jumpHeight = 5f; // how high he jumps
 
@@ -38,23 +32,12 @@ public class Player : MonoBehaviour
 
     }
 
-    /*/private void OnDrawGizmos()
-    {
-        if (curPortal != null)
-        {
-            float distance = Vector2.Distance(transform.position, curPortal.position);
-            if(distance < portalDistance)
-            {
-                print("Player is within Interactable Distance!");
-                curPortal.SendMessage("Interact");
-            }
-        }
-    }
-    /*/
+    
 
     // Update is called once per frame
     void Update()
     {
+        // when player is not dead the player can use inputs to move their character around and attack
         if (!controller.IsDead)
         {
             float horizontal = Input.GetAxis("Horizontal");
@@ -75,8 +58,8 @@ public class Player : MonoBehaviour
             controller.Move(horizontal * moveSpeed);
         }
     }
-
-    void Attack()
+    //makes your player attack an enemy
+   public void Attack()
     {
         controller.Attack();
     }
